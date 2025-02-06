@@ -1,16 +1,21 @@
 #include<iostream>
+#include<iomanip>
 
 int main(){
     
-int number;
-bool resultado;
+int horas;
+float segundos;
+const int hora = 60;
 
-std::cout<<"Digite um numero: "<<std::endl;
-std::cin>>number;
 
-resultado = (number % 3 == 0 && number % 5 == 0);
+std::cout<<"Digite o valor de horas: "<<std::endl;
+std::cin>>horas;
 
-std::cout<<resultado<<std::endl;
+int minutos = hora / 60;
+
+segundos =  (60 * 60)/minutos;
+
+std::cout<<std::fixed<<std::setprecision(2)<<segundos<<std::endl;
 
 
 return 0;
