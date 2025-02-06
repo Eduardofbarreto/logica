@@ -2,16 +2,21 @@
 
 int main(){
     
-int year;
+int a, b, c;
 bool resposta;
 
-std::cout<<"Digite um ano: "<<std::endl;
-std::cin>>year;
+std::cout<<"Digite o valor do primeiro lado: "<<std::endl;
+std::cin>>a;
 
-resposta = (year % 4 == 0 or year % 100 == 0 && year % 400 == 0);
+std::cout<<"Digite o valor do segundo lado: "<<std::endl;
+std::cin>>b;
+
+std::cout<<"Digite o valor para o terceiro lado: "<<std::endl;
+std::cin>>c;
+
+resposta = (a + b > c && a + c > b && b + c > a);
 
 std::cout<<resposta<<std::endl;
-
 
 
 return 0;
