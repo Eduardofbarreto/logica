@@ -2,19 +2,13 @@
 
 int main(){
     
-int a, b, c;
+int number;
 bool resposta;
 
-std::cout<<"Digite o valor do primeiro lado: "<<std::endl;
-std::cin>>a;
+std::cout<<"Digite um numero: "<<std::endl;
+std::cin>>number;
 
-std::cout<<"Digite o valor do segundo lado: "<<std::endl;
-std::cin>>b;
-
-std::cout<<"Digite o valor para o terceiro lado: "<<std::endl;
-std::cin>>c;
-
-resposta = (a + b > c && a + c > b && b + c > a);
+resposta = (number >= 0 && number % 2 == 0);
 
 std::cout<<resposta<<std::endl;
 
