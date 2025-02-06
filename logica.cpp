@@ -2,18 +2,15 @@
 
 int main(){
     
-int base, altura;
-float area;
+int number;
+bool resultado;
 
-std::cout<<"Digite a altura: "<<std::endl;
-std::cin>>altura;
+std::cout<<"Digite um numero: "<<std::endl;
+std::cin>>number;
 
-std::cout<<"Digite a base: "<<std::endl;
-std::cin>>base;
+resultado = (number % 3 == 0 && number % 5 == 0);
 
-area = (base * altura)/2;
-
-std::cout<<"A area do triangulo e de: "<<area<<std::endl;
+std::cout<<resultado<<std::endl;
 
 
 return 0;
