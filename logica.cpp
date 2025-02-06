@@ -3,12 +3,13 @@
 
 int main(){
 
-std::string palavra;
+std::string str1 = "Hello";
+std::string str2 = "world.";
 
-std::cout<<"Digite uma palavra: "<<std::endl;
-std::cin>>palavra;
+std::string result = str1 + " " + str2;
 
-std::cout<<palavra.find(palavra)<<std::endl;
+std::cout<<result<<std::endl;
+
 
 return 0;
 
