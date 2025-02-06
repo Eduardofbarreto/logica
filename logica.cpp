@@ -3,11 +3,12 @@
 
 int main(){
 
-std::string str1 = "Eduardo";
+std::string nome;
 
-std::cout<<str1.substr(1,1)<<std::endl;
-std::cout<<str1.substr(2,1)<<std::endl;
-std::cout<<str1.substr(3,1)<<std::endl;
+std::cout<<"Qual seu nome: "<<std::endl;
+std::cin>>nome;
+
+std::cout<<nome.length()<<std::endl;
 
 return 0;
 
