@@ -2,21 +2,15 @@
 
 int main(){
     
-int num1, num2, num3;
-float media;
+int num;
+bool resposta;
 
-std::cout<<"Digite o primeiro numero: "<<std::endl;
-std::cin>>num1;
+std::cout<<"Digite um numero: "<<std::endl;
+std::cin>>num;
 
-std::cout<<"Digite o segundo numero: "<<std::endl;
-std::cin>>num2;
+resposta = (num %2 == 0);
 
-std::cout<<"Digite o terceiro numero: "<<std::endl;
-std::cin>>num3;
-
-media = (num1 + num2 + num3)/3;
-
-std::cout<<"O resultado da média é: "<<media<<std::endl;
+std::cout<<resposta<<std::endl;
 
 
 return 0;
