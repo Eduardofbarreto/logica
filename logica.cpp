@@ -3,13 +3,11 @@
 
 int main(){
 
-std::string str1 = "Hello";
-std::string str2 = "world.";
+std::string str1 = "Eduardo";
 
-std::string result = str1 + " " + str2;
-
-std::cout<<result<<std::endl;
-
+std::cout<<str1.substr(1,1)<<std::endl;
+std::cout<<str1.substr(2,1)<<std::endl;
+std::cout<<str1.substr(3,1)<<std::endl;
 
 return 0;
 
