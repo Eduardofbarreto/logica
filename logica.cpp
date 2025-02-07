@@ -1,27 +1,21 @@
 #include<iostream>
 
+
 int main(){
 
-int arr[4];
-int modify;
+int arr1[5], arr2[5], arr3[0];
 
-std::cout<<"Digite 4 numeros inteiros: "<<std::endl;
-std::cin>>arr[0]>>arr[1]>>arr[2]>>arr[3];
+std::cout<<"Digite 5 inteiros para o primeiro array: "<<std::endl;
+std::cin>>arr1[0]>>arr1[1]>>arr1[2]>>arr1[3]>>arr1[4];
 
-std::cout<<"Digite o indice do array trocado: "<<std::endl;
-std::cin>>modify;
+std::cout<<"Digite mais 5 inteiros para o outro array: "<<std::endl;
+std::cin>>arr2[0]>>arr2[1]>>arr2[2]>>arr2[3]>>arr2[4];
 
-if(modify == 0){
-    arr[0] = -1;
-}else if(modify == 1){
-    arr[1] = -1;
-}else if(modify == 2){
-    arr[2] = -1;
-}else{
-    arr[3] = -1;
-}
+std::cout<<"Seu primeiro array: "<<arr1[0]<<arr1[1]<<arr1[2]<<arr1[3]<<arr1[4]<<std::endl;
+std::cout<<"Seu segundo array: "<<arr2[0]<<arr2[1]<<arr2[2]<<arr2[3]<<arr2[4]<<std::endl;
 
-std::cout<<"Os arrays ficaram: "<<arr[0]<<" "<<arr[1]<<" "<<arr[2]<<" "<<arr[3]<<std::endl;
+
+
 
 return 0;
 
