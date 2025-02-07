@@ -3,16 +3,17 @@
 
 int main(){
 
-std::string vogal[5] = {"a", "b", "c", "d","e"};
 std::string letra;
 
 std::cout<<"Digite uma letra: "<<std::endl;
 std::cin>>letra;
 
-if(letra == vogal[5]){
-    std::cout<<"Essa letra e uma vogal!"<<std::endl;
+if(letra == "a" || letra == "e" || letra == "i" || 
+letra == "o" || letra == "u" || letra == "A" || letra == "E" 
+|| letra == "I" || letra == "O" || letra == "U"){
+    std::cout<<"E uma vogal!"<<std::endl;
 }else{
-    std::cout<<"Essa letra nao e uma vogal."<<std::endl;
+    std::cout<<"Nao e uma vogal!"<<std::endl;
 }
 
 return 0;
