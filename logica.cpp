@@ -11,7 +11,7 @@ std::cin>>nome;
 std::cout<<"Qual seu sobrenome: "<<std::endl;
 std::cin>>sobrenome;
 
-std::cout<<"Your name is " + nome + " and your last name is " + sobrenome)
+std::cout<<"Your name is "<<nome<<" and your last name is "<<sobrenome<<std::endl;
 
 std::cout<<nome.length()<<sobrenome.length()<<std::endl;
 
