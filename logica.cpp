@@ -1,19 +1,21 @@
 #include<iostream>
-
+#include<string>
 
 int main(){
+std::string frase;
 
-std::string nome, sobrenome;
+std::cout<<"Digite uma frase: ";
+std::getline(std::cin, frase);
 
-std::cout<<"Qual seu nome: "<<std::endl;
-std::cin>>nome;
+size_t posicao = frase.find('a');
 
-std::cout<<"Qual seu sobrenome: "<<std::endl;
-std::cin>>sobrenome;
+    while(posicao != std::string::npos){
+        frase.erase(posicao, 1);
+        frase.insert(posicao, "e");
+        posicao = frase.find('a', posicao + 1);
+    }
 
-std::cout<<"Your name is "<<nome<<" and your last name is "<<sobrenome<<std::endl;
-
-std::cout<<nome.length()<<sobrenome.length()<<std::endl;
+std::cout<<"A frase modificada e: "<<frase<<std::endl;
 
 return 0;
 
