@@ -3,18 +3,16 @@
 
 int main(){
 
-std::string letra;
+int numbers [] = {1,2,3,4,5,6,7,8,9,10};
+int tamanho = sizeof(numbers)/sizeof(numbers[0]);
 
-std::cout<<"Digite uma letra: "<<std::endl;
-std::cin>>letra;
+std::cout<<"Numeros pares na lista: "<<std::endl;
+    for(int i = 0; i < tamanho; i++){
+        if(numbers[i] % 2 == 0){
+            std::cout<<numbers[i]<<" "<<std::endl;
+        }
+    }
 
-if(letra == "a" || letra == "e" || letra == "i" || 
-letra == "o" || letra == "u" || letra == "A" || letra == "E" 
-|| letra == "I" || letra == "O" || letra == "U"){
-    std::cout<<"E uma vogal!"<<std::endl;
-}else{
-    std::cout<<"Nao e uma vogal!"<<std::endl;
-}
 
 return 0;
 
