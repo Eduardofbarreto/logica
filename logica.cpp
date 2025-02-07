@@ -2,12 +2,17 @@
 
 int main(){
 
-int arr[5];
+int arr[3];
+int indice;
 
-std::cout<<"Digite 5 numeros inteiros: ";
-std::cin>>arr[0]>>arr[1]>>arr[2]>>arr[3]>>arr[4];
+std::cout<<"Digite 3 numeros inteiros: "<<std::endl;
+std::cin>>arr[0]>>arr[1]>>arr[2];
 
-std::cout<<"Voce digitou: "<<arr[4]<<" "<<arr[3]<<" "<<arr[2]<<" "<<arr[1]<<" "<<arr[0]<<std::endl;
+std::cout<<"Digite um valor para selecionar o array: "<<std::endl;
+std::cin>>indice;
+
+std::cout<<"Voce escolheu: "<<arr[indice]<<std::endl;
+
 
 return 0;
 
