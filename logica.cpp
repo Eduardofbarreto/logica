@@ -2,12 +2,10 @@
 
 int main(){
 
-int arr[3];
+int arr[5] = {1, 2, 3};
+arr[1] = 10;
 
-std::cout<<"Digite 3 numeros inteiros: ";
-std::cin>>arr[0]>>arr[1]>>arr[2];
-
-std::cout<<"Voce digitou: "<<arr[0]<<arr[1]<<arr[2];
+std::cout<<arr[1];
 
 return 0;
 
