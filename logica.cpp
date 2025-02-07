@@ -1,17 +1,13 @@
 #include<iostream>
-#include<string>
-#include<algorithm>
 
 int main(){
 
-std::string frase;
+int arr[3];
 
-std::cout<<"Digite uma frase: ";
-std::getline(std::cin, frase);
+std::cout<<"Digite 3 numeros inteiros: ";
+std::cin>>arr[0]>>arr[1]>>arr[2];
 
-std::replace(frase.begin(), frase.end(), 'a', 'e');
-
-std::cout<<"A frase modificada e: "<<frase<<std::endl;
+std::cout<<"Voce digitou: "<<arr[0]<<arr[1]<<arr[2];
 
 return 0;
 
