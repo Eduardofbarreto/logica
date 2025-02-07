@@ -2,12 +2,12 @@
 
 int main(){
 
-int arr[5] = {1, 2, 3};
-arr[1] = 10;
+int arr[5];
 
-int tamanho = sizeof(arr) / sizeof(arr[0]);
+std::cout<<"Digite 5 numeros inteiros: ";
+std::cin>>arr[0]>>arr[1]>>arr[2]>>arr[3]>>arr[4];
 
-std::cout<<tamanho;
+std::cout<<"Voce digitou: "<<arr[4]<<" "<<arr[3]<<" "<<arr[2]<<" "<<arr[1]<<" "<<arr[0]<<std::endl;
 
 return 0;
 
