@@ -1,18 +1,17 @@
 #include <iostream>
 
 int main() {
-    int numero;
+    int idade;
 
     do {
-        std::cout << "Digite um número entre 1 e 10: ";
-        std::cin >> numero;
-
-        if (numero < 1 || numero > 10) {
-            std::cout << "Número inválido! Tente novamente.\n";
+        std::cout << "Digite sua idade: " << std::endl;
+        std::cin >> idade;
+        if (idade >= 18) {
+            std::cout << "Obrigado pelo seu registro!" << std::endl; // Adicionado endl e corrigido "resistro" para "registro"
+        } else {
+            std::cout << "Você precisa ter 18 anos ou mais para se registrar." << std::endl; // Mensagem para menores de idade
         }
-    } while (numero < 1 || numero > 10);
-
-    std::cout << "Número válido! Você digitou: " << numero << std::endl;
+    } while (idade < 18);
 
     return 0;
 }
