@@ -1,17 +1,19 @@
 #include<iostream>
 
-
 int main(){
 
-int numbers [] = {10,20,30,40,50,60,70,80,90,100};
-int tamanho = sizeof(numbers)/sizeof(numbers[0]);
+int num;
+std::string dias[7] = {"Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira",
+"Quinta-feira", "Sexta-feira", "Sábado"};
 
-    for(int i = 0; i < tamanho; i++){
-        if(numbers[i] % 2 == 0){
-            std::cout<<"A lista de numeros par e: "<<numbers[i]<<std::endl;
-        }
+std::cout<<"Digite um numero para ver qual dia corresponde: "<<std::endl;
+std::cin>>num;
+
+    if(num <=0 && num >7){
+        std::cout<<"Numero invalido!"<<std::endl;
+    }else{
+        std::cout<<dias[num-1]<<std::endl;
     }
-
 
 
 return 0;
