@@ -1,17 +1,14 @@
 #include <iostream>
 
 int main() {
-    int idade;
+    int cont = 0;
 
-    do {
-        std::cout << "Digite sua idade: " << std::endl;
-        std::cin >> idade;
-        if (idade >= 18) {
-            std::cout << "Obrigado pelo seu registro!" << std::endl; // Adicionado endl e corrigido "resistro" para "registro"
-        } else {
-            std::cout << "Você precisa ter 18 anos ou mais para se registrar." << std::endl; // Mensagem para menores de idade
-        }
-    } while (idade < 18);
+    do{
+        std::cout<<"Contador: "<<cont<<std::endl;
+        cont++;
+    }
+    while(cont < 5);
+    std::cout<<"Não deu"<<std::endl;
 
     return 0;
 }
