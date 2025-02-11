@@ -1,19 +1,30 @@
 #include <iostream>
 #include <string>
 
-class texto{
+class name{
     public:
-    std::string palavra;
+    std::string name;
+};
+
+class lastname{
+    public:
+    std::string lastname;
 };
 
 int main(){
 
-texto meuTexto;
+    name myName;
+    lastname myLastname;
 
-std::cout<<"Digite uma palavra: "<<std::endl;
-std::cin>>meuTexto.palavra;
+    std::cout<<"Digite seu nome: "<<std::endl;
+    std::cin>>myName.name;
 
-std::cout<<"A sua palavra e: "<<meuTexto.palavra<<std::endl;
+    std::cout<<"Digite seu sobrenome: "<<std::endl;
+    std::cin>>myLastname.lastname;
+
+    std::cout<<"Seu nome e: "<<myName.name<<" "<<myLastname.lastname<<std::endl;
+
+    
 
 return 0;
 
