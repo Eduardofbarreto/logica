@@ -1,23 +1,41 @@
 #include <iostream>
 #include <string>
 
-class apresentacao{
+class soma{
+    public:
+    int a, b, resultado;
+
+    void somar(){
+        resultado = a + b;
+        std::cout<<"O resultado da soma e: "<<resultado<<std::endl;
+    }
+};
+
+class saudacao{
     public:
     std::string nome;
 
-    void mynameis(){
-        std::cout<<"Muito bem-vindo "<<nome<<" ao nosso espaço!";
+    void apresentacao(){
+        std::cout<<"Bem-vindo "<<nome<<" ao nosso servico Premium!";
     }
 };
 
 int main(){
 
-    apresentacao terminal;
+    soma operacao;
+    saudacao mensagem;
 
-    std::cout<<"Qual seu nome: "<<std::endl;
-    std::cin>>terminal.nome;
+    std::cout<<"Digite um valor para a: "<<std::endl;
+    std::cin>>operacao.a;
 
-    terminal.mynameis();
+    std::cout<<"Digite um valor para b: "<<std::endl;
+    std::cin>>operacao.b;
 
+    std::cout<<"Digite seu nome: "<<std::endl;
+    std::cin>>mensagem.nome;
+
+    operacao.somar();
+    mensagem.apresentacao();
+    
     return 0;
 }
