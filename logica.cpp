@@ -1,41 +1,48 @@
 #include <iostream>
 #include <string>
 
-class soma{
+class mercado{
     public:
-    int a, b, resultado;
+    std::string produto1;
+    std::string produto2;
+    std::string produto3;
 
-    void somar(){
-        resultado = a + b;
-        std::cout<<"O resultado da soma e: "<<resultado<<std::endl;
-    }
-};
+    double preco1;
+    double preco2;
+    double preco3;
 
-class saudacao{
-    public:
-    std::string nome;
-
-    void apresentacao(){
-        std::cout<<"Bem-vindo "<<nome<<" ao nosso servico Premium!";
+    double somas(){
+        double resultado = (preco1 + preco2 + preco3);
+        std::cout<<"Voce comprou: "<<produto1<<", "<<produto2<<" e "<<produto3<<std::endl;
+        std::cout<<"Gastando um total de: "<<resultado<<std::endl;
+        return resultado;
+        
     }
 };
 
 int main(){
 
-    soma operacao;
-    saudacao mensagem;
+    mercado mercado;
 
-    std::cout<<"Digite um valor para a: "<<std::endl;
-    std::cin>>operacao.a;
+    std::cout<<"Digite o produto 1: "<<std::endl;
+    std::cin>>mercado.produto1;
 
-    std::cout<<"Digite um valor para b: "<<std::endl;
-    std::cin>>operacao.b;
+    std::cout<<"Digite o valor do produto 1: "<<std::endl;
+    std::cin>>mercado.preco1;
 
-    std::cout<<"Digite seu nome: "<<std::endl;
-    std::cin>>mensagem.nome;
+    std::cout<<"Digite o produto 2: "<<std::endl;
+    std::cin>>mercado.produto2;
 
-    operacao.somar();
-    mensagem.apresentacao();
+    std::cout<<"Digite o valor do produto 2: "<<std::endl;
+    std::cin>>mercado.preco2;
+
+    std::cout<<"Digite o produto 3: "<<std::endl;
+    std::cin>>mercado.produto3;
+
+    std::cout<<"Digite o valor do produto 3: "<<std::endl;
+    std::cin>>mercado.preco3;
+
+    std::cout<<mercado.somas();
     
     return 0;
 }
