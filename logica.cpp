@@ -1,4 +1,4 @@
-#include <iostream>
+#include<iostream>
 #include<string>
 
 class agenda{
@@ -7,21 +7,22 @@ class agenda{
     std::string telefone;
 
     void mensagem(){
-        std::cout<<"Contato cadastrado com sucesso!"<<std::endl;
+        std::cout<<"Contato salvo com êxito!";
     }
 };
 
 int main(){
 
-agenda cadastra;
+    agenda processar;
 
-std::cout<<"Digite o nome: "<<std::endl;
-std::cin>>cadastra.nome;
+    std::cout<<"Digite o nome: "<<std::endl;
+    std::cin>>processar.nome;
 
-std::cout<<"Digite o telefone: "<<std::endl;
-std::cin>>cadastra.telefone;
+    std::cout<<"Digite o telefone: "<<std::endl;
+    std::cin>>processar.telefone;
 
-cadastra.mensagem();
+    processar.mensagem();
 
-  return 0;
+
+    return 0;
 }
