@@ -1,45 +1,58 @@
 #include <iostream>
 #include <string>
 
-class array{
+class calculadora{
     public:
-    int numeros[5] = {1,2,3,4,5};
-    int numEscolhido;
+    int a, b;
+    int op;
+    float resultado;
 
-    void mensagem(){
-        std::cout<<"O número escolhido foi: "<<numeros[numEscolhido-1]<<std::endl;
-        std::cout<<"\n"<<std::endl;
+    void resolver(){
+        switch(op){
+            case 1:
+                resultado = a + b;
+                std::cout<<a<<" + "<<b<<" = "<<resultado<<std::endl;
+                break;
+            case 2:
+                resultado = a - b;
+                std::cout<<a<<" - "<<b<<" = "<<resultado<<std::endl;
+                break;
+            case 3: 
+                resultado = a * b;
+                std::cout<<a<<" * "<<b<<" = "<<resultado<<std::endl;
+                break;
+            case 4:
+                if(b == 0){
+                    std::cout<<"Erro: Divisao por zero!"<<std::endl;
+                    return;
+                }
+                resultado = static_cast<float>(a)/b;
+                std::cout<<a<<" / "<<b<<" = "<<resultado<<std::endl;
+                break;
+            default:
+                std::cout<<"Operacao invalida!"<<std::endl;
+                return;
+        }
     }
 };
 
 
+
 int main() {
 
-    array aqui;
+    calculadora calc;
 
-    std::cout<<"Digite um numero: "<<std::endl;
-    std::cin>>aqui.numEscolhido;
+    std::cout<<"Digite um valor para a: "<<std::endl;
+    std::cin>>calc.a;
 
-    switch (aqui.numEscolhido)
-    {
-    case 1:
-        aqui.mensagem();
-        break;
-    case 2:
-        aqui.mensagem();
-        break;
-    case 3:
-        aqui.mensagem();
-        break;
-    case 4:
-        aqui.mensagem();
-        break;
-    case 5:
-        aqui.mensagem();
-        break;
-    default:
-        break;
-    }
+    std::cout<<"Digite um valor para b: "<<std::endl;
+    std::cin>>calc.b;
+
+    std::cout<<"Digite um valor para operacao: 1(soma), 2(subtracao), 3(multiplicacao) e 4(divisao) "<<std::endl;
+    std::cin>>calc.op;
+
+    calc.resolver();
+
 
     return 0;
 }
