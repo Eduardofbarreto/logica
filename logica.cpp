@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-
+/*
 class calculadora{
     public:
     int a, b;
@@ -35,7 +35,43 @@ class calculadora{
         }
     }
 };
+*/
 
+class calculadora{
+    public:
+    int a, b;
+    char op;
+    float resultado;
+
+    void calcular(){
+        switch(op){
+            case '+':
+                resultado = a + b;
+                break;
+            case '-':
+                resultado = a - b;
+                break;
+            case '*':
+                resultado = a * b;
+                break;
+            case '/':
+                if(b == 0){
+                    std::cout<<"Erro: Divisao por zero!"<<std::endl;
+                    std::cout<<"\n"<<std::endl;
+                }else{
+                    resultado = static_cast<float>(a) / b;
+                }
+                break;
+            default:
+                std::cout<<"Voce inseriu um valor inexistente!"<<std::endl;
+                return;
+        }
+
+        std::cout<<"\n"<<std::endl;
+        std::cout<<"O resultado de "<<a<<" "<<op<<" "<<b<<" = "<<resultado<<std::endl;
+        std::cout<<"\n"<<std::endl;
+    }
+};
 
 
 int main() {
@@ -45,13 +81,14 @@ int main() {
     std::cout<<"Digite um valor para a: "<<std::endl;
     std::cin>>calc.a;
 
-    std::cout<<"Digite um valor para b: "<<std::endl;
-    std::cin>>calc.b;
-
     std::cout<<"Digite um valor para operacao: 1(soma), 2(subtracao), 3(multiplicacao) e 4(divisao) "<<std::endl;
     std::cin>>calc.op;
 
-    calc.resolver();
+    std::cout<<"Digite um valor para b: "<<std::endl;
+    std::cin>>calc.b;
+
+
+    calc.calcular();
 
 
     return 0;
