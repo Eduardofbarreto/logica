@@ -1,21 +1,30 @@
-#include <iostream>
-#include <vector>
+#include<iostream>
+#include<string>
 
-int main() {
-    std::vector<int> numeros = {10, 20, 30};
-    std::vector<std::string> palavras = {"casa", "comida", "roupa"};
+int main(){
 
-    /*
-    numeros.push_back(40);
+    //Ambiente de declarações de variáveis
+    std::string str1 = "Eduardo";
+    std::string str2 = " Barreto";
 
-    for (int i = 0; i < numeros.size(); i++) {
-        std::cout << numeros[i] << " ";
-    }
-    std::cout << std::endl; // Imprime: 10 20 30 40 50
-    */
 
-    std::cout<<numeros.size();
-    std::cout<<palavras.size();
+    //int tamanho = str1.length();
+    //int tamanho1 = str1.size();
+    //bool vazia = str1.empty();
+    //str1.append(str2);
+    //str1.insert(0, str2);
+    //str1.replace(5, 6, str2);
+    //str1.erase(5, 6);
+    //str1.clear();
+    //str1.find("Eduardo");
+    //int posicao = str1.rfind("Barreto");
+    //str1.substr(5, 5);
+
+
+
+    std::cout<<str1.rfind("Eduardo")<<std::endl;
+
+
 
     return 0;
 }
