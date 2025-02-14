@@ -4,12 +4,14 @@
 int main(){
     int num;
 
-    std::cout<<"Digite algum numero: "<<std::endl;
+    std::cout<<"Digite um numero :";
     std::cin>>num;
 
-    if(num % 2 == 0){
-        std::cout<<"Par"<<std::endl;
+    if(num >=0){
+        std::cout<<"Num positivo!";
     }else{
-        std::cout<<"Impar"<<std::endl;
+        std::cout<<"Num negativo!!";
     }
+
+    return 0;
 }
