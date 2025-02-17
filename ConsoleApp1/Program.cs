@@ -9,24 +9,12 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        pessoa cadastro = new pessoa();
+        pessoa pessoa1 = new pessoa();
 
-        Console.WriteLine("Digite o nome da pessoa: ");
-        cadastro.nome = Console.ReadLine();
+        pessoa1.nome = "Eduardo";
+        pessoa1.sobrenome = "Barreto";
+        pessoa1.idade = 37;
 
-        Console.WriteLine("Digite o sobronome: ");
-        cadastro.sobrenome = Console.ReadLine();
-
-        Console.WriteLine("Digite a idade: ");
-        cadastro.idade = int.Parse(Console.ReadLine());
-
-        if(cadastro.idade >= 18){
-            Console.WriteLine("Maior de idade!");
-        }else{
-            Console.WriteLine("Menor de idade!");
-        }
-
-        Console.WriteLine("O nome da pessoa é: " + cadastro.nome + " " + cadastro.sobrenome);
-        Console.WriteLine("A idade é: " + cadastro.idade);
+        Console.WriteLine("O nome é " + pessoa1.nome + " " + pessoa1.sobrenome + " e tem " + pessoa1.idade + ".");
     }
 }
