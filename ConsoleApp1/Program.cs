@@ -1,15 +1,22 @@
-﻿using System;
+﻿public class Cachorro
+{
+    public string Nome { get; set; }
+    public int Idade { get; set; }
+}
 
 public class Program
 {
     public static void Main(string[] args)
     {
-        Console.WriteLine("Digite seu nome: ");
-        string nome = Console.ReadLine();
+        Cachorro meuCachorro = new Cachorro();
 
-        Console.WriteLine("Digite sua idade: ");
-        int idade = int.Parse(Console.ReadLine());  
+        Console.WriteLine("Digite o nome do seu cachorro: ");
+        meuCachorro.Nome = Console.ReadLine();
+        
+        Console.WriteLine("Digite a idade do cachorro: ");
+        meuCachorro.Idade = int.Parse(Console.ReadLine());
 
-        Console.WriteLine("Seu nome é: " + nome + " e sua idade é " + idade);
+        Console.WriteLine("O nome do cachorro é " + meuCachorro.Nome);
+        Console.WriteLine("A idade do cachorro é " + meuCachorro.Idade);
     }
 }
