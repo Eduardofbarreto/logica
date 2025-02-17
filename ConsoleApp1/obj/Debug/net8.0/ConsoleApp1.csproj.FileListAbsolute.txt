@@ -1,0 +1,15 @@
+/home/edu/Documentos/programacao/logica/logica/ConsoleApp1/bin/Debug/net8.0/ConsoleApp1
+/home/edu/Documentos/programacao/logica/logica/ConsoleApp1/bin/Debug/net8.0/ConsoleApp1.deps.json
+/home/edu/Documentos/programacao/logica/logica/ConsoleApp1/bin/Debug/net8.0/ConsoleApp1.runtimeconfig.json
+/home/edu/Documentos/programacao/logica/logica/ConsoleApp1/bin/Debug/net8.0/ConsoleApp1.dll
+/home/edu/Documentos/programacao/logica/logica/ConsoleApp1/bin/Debug/net8.0/ConsoleApp1.pdb
+/home/edu/Documentos/programacao/logica/logica/ConsoleApp1/obj/Debug/net8.0/ConsoleApp1.GeneratedMSBuildEditorConfig.editorconfig
+/home/edu/Documentos/programacao/logica/logica/ConsoleApp1/obj/Debug/net8.0/ConsoleApp1.AssemblyInfoInputs.cache
+/home/edu/Documentos/programacao/logica/logica/ConsoleApp1/obj/Debug/net8.0/ConsoleApp1.AssemblyInfo.cs
+/home/edu/Documentos/programacao/logica/logica/ConsoleApp1/obj/Debug/net8.0/ConsoleApp1.csproj.CoreCompileInputs.cache
+/home/edu/Documentos/programacao/logica/logica/ConsoleApp1/obj/Debug/net8.0/ConsoleApp1.sourcelink.json
+/home/edu/Documentos/programacao/logica/logica/ConsoleApp1/obj/Debug/net8.0/ConsoleApp1.dll
+/home/edu/Documentos/programacao/logica/logica/ConsoleApp1/obj/Debug/net8.0/refint/ConsoleApp1.dll
+/home/edu/Documentos/programacao/logica/logica/ConsoleApp1/obj/Debug/net8.0/ConsoleApp1.pdb
+/home/edu/Documentos/programacao/logica/logica/ConsoleApp1/obj/Debug/net8.0/ConsoleApp1.genruntimeconfig.cache
+/home/edu/Documentos/programacao/logica/logica/ConsoleApp1/obj/Debug/net8.0/ref/ConsoleApp1.dll

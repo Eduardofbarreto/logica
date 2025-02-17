@@ -1,6 +1,8 @@
 #include<iostream>
 #include<string>
 
+using namespace std;
+
 class lados{
     public:
     int lado1, lado2, lado3;
@@ -24,8 +26,8 @@ int main(){
 
     int lado1, lado2, lado3;
 
-    std::cout<<"Digite o lado1: "<<std::endl;
-    std::cin>>lado1;
+cout<<"Digite o lado1: "<<std::endl;
+cin>>lado1;
 
     std::cout<<"Digite o lado2: "<<std::endl;
     std::cin>>lado2;

@@ -110,5 +110,6 @@
     "stdexcept": "cpp",
     "streambuf": "cpp",
     "typeinfo": "cpp"
-  }
+  },
+  "dotnet.defaultSolution": "ConsoleApp1.sln"
 }
