@@ -1,20 +1,28 @@
-﻿public class pessoa{
-    public string nome {get; set;}
-    public string sobrenome {get; set;}
+﻿public class clientes{
+    public string nome{get; set;}
+    public string endereco{get; set;}
 
-    public int idade {get; set;}
+    public string telefone{get;set;}
+
+    public void mensagem(){
+        Console.WriteLine("Bem-vindo ao nosso estabelecimento " + nome + "!");
+    }
 }
 
-public class Program
-{
+public class Program{
     public static void Main(string[] args)
     {
-        pessoa pessoa1 = new pessoa();
+        clientes cliente = new clientes();
 
-        pessoa1.nome = "Eduardo";
-        pessoa1.sobrenome = "Barreto";
-        pessoa1.idade = 37;
+        Console.WriteLine("Digite o nome do cliente: ");
+        cliente.nome = Console.ReadLine();
 
-        Console.WriteLine("O nome é " + pessoa1.nome + " " + pessoa1.sobrenome + " e tem " + pessoa1.idade + ".");
+        Console.WriteLine("Digite o endereço: ");
+        cliente.endereco = Console.ReadLine();
+
+        Console.WriteLine("Digite o telefone: ");
+        cliente.telefone = Console.ReadLine();
+
+        cliente.mensagem();
     }
 }
