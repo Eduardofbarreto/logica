@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/edufbarreto/Documentos/Programação/logica/logica/ConsoleApp1/ConsoleApp1.csproj",
-      "projectName": "ConsoleApp1",
-      "projectPath": "/home/edufbarreto/Documentos/Programação/logica/logica/ConsoleApp1/ConsoleApp1.csproj",
+      "projectUniqueName": "/home/edufbarreto/Documentos/Programação/logica/logica/ConsoleApp1/pcdecasa/pcdecasa.csproj",
+      "projectName": "pcdecasa",
+      "projectPath": "/home/edufbarreto/Documentos/Programação/logica/logica/ConsoleApp1/pcdecasa/pcdecasa.csproj",
       "packagesPath": "/home/edufbarreto/.nuget/packages/",
-      "outputPath": "/home/edufbarreto/Documentos/Programação/logica/logica/ConsoleApp1/obj/",
+      "outputPath": "/home/edufbarreto/Documentos/Programação/logica/logica/ConsoleApp1/pcdecasa/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/edufbarreto/.nuget/NuGet/NuGet.Config"

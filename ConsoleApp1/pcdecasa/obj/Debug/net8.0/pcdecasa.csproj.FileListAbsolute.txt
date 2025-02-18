@@ -1,0 +1,15 @@
+/home/edufbarreto/Documentos/Programação/logica/logica/ConsoleApp1/pcdecasa/bin/Debug/net8.0/pcdecasa
+/home/edufbarreto/Documentos/Programação/logica/logica/ConsoleApp1/pcdecasa/bin/Debug/net8.0/pcdecasa.deps.json
+/home/edufbarreto/Documentos/Programação/logica/logica/ConsoleApp1/pcdecasa/bin/Debug/net8.0/pcdecasa.runtimeconfig.json
+/home/edufbarreto/Documentos/Programação/logica/logica/ConsoleApp1/pcdecasa/bin/Debug/net8.0/pcdecasa.dll
+/home/edufbarreto/Documentos/Programação/logica/logica/ConsoleApp1/pcdecasa/bin/Debug/net8.0/pcdecasa.pdb
+/home/edufbarreto/Documentos/Programação/logica/logica/ConsoleApp1/pcdecasa/obj/Debug/net8.0/pcdecasa.GeneratedMSBuildEditorConfig.editorconfig
+/home/edufbarreto/Documentos/Programação/logica/logica/ConsoleApp1/pcdecasa/obj/Debug/net8.0/pcdecasa.AssemblyInfoInputs.cache
+/home/edufbarreto/Documentos/Programação/logica/logica/ConsoleApp1/pcdecasa/obj/Debug/net8.0/pcdecasa.AssemblyInfo.cs
+/home/edufbarreto/Documentos/Programação/logica/logica/ConsoleApp1/pcdecasa/obj/Debug/net8.0/pcdecasa.csproj.CoreCompileInputs.cache
+/home/edufbarreto/Documentos/Programação/logica/logica/ConsoleApp1/pcdecasa/obj/Debug/net8.0/pcdecasa.sourcelink.json
+/home/edufbarreto/Documentos/Programação/logica/logica/ConsoleApp1/pcdecasa/obj/Debug/net8.0/pcdecasa.dll
+/home/edufbarreto/Documentos/Programação/logica/logica/ConsoleApp1/pcdecasa/obj/Debug/net8.0/refint/pcdecasa.dll
+/home/edufbarreto/Documentos/Programação/logica/logica/ConsoleApp1/pcdecasa/obj/Debug/net8.0/pcdecasa.pdb
+/home/edufbarreto/Documentos/Programação/logica/logica/ConsoleApp1/pcdecasa/obj/Debug/net8.0/pcdecasa.genruntimeconfig.cache
+/home/edufbarreto/Documentos/Programação/logica/logica/ConsoleApp1/pcdecasa/obj/Debug/net8.0/ref/pcdecasa.dll

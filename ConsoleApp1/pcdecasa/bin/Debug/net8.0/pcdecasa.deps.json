@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "pcdecasa/1.0.0": {
+        "runtime": {
+          "pcdecasa.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "pcdecasa/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
