@@ -1,36 +1,58 @@
-﻿using Microsoft.Win32;
+﻿using System.Dynamic;
+using Microsoft.Win32;
 
-class produto{
-    public string nome{get; set;}
-    public int quantidade{get; set;}
 
-    public double valor{get; set;}
+class Operacao{
+    public char operacao{get; set;}
+    public double num1{get; set;}
+    public double num2 {get; set;}
 
-    public double total{get; set;}
-
-    public void calculo(){
-        Console.WriteLine("O produto escolhido foi: " + nome);
-        total = quantidade * valor;
-        Console.WriteLine("Você comprou " + quantidade + " " + nome + ".");
-        Console.WriteLine("Dando um valor total de " + total + ".");
+    public void Calcular(){
+        switch(operacao){
+            case '+':
+                double soma = num1 + num2;
+                Console.WriteLine("O resultado da soma é " + soma);
+                break;
+            case '-':
+                double subtracao = num1 - num2;
+                Console.WriteLine("O resultado da subtração é " + subtracao);
+                break;
+            case '*':
+                double multiplicacao = num1 * num2;
+                Console.WriteLine("O resultado da multiplicação é " + multiplicacao);
+                break;
+            case '/':
+                if(num2 == 0){
+                    Console.WriteLine("ERRO!! Divisão por zero não será permitido!");
+                    return;
+                }else{
+                    double divisao = num1 / num2;
+                    Console.WriteLine("O resultado da divisão é " + divisao);
+                    break;
+                }
+            default:
+                Console.WriteLine("Nenhuma opção válida!!");
+                break;
+        }
     }
 }
 
 public class Program{
     public static void Main(string[] args)
     {
-        produto registro = new produto();
+        
+        Operacao calculadora = new Operacao();
 
-        Console.WriteLine("Digite o nome do produto: ");
-        registro.nome = Console.ReadLine();
+        Console.WriteLine("Digite um valor para número 1: ");
+        calculadora.num1 = double.Parse(Console.ReadLine());
 
-        Console.WriteLine("Digite a quantidade de produto: ");
-        registro.quantidade = int.Parse(Console.ReadLine());
+        Console.WriteLine("Digite a operação desejada: ");
+        calculadora.operacao = Console.ReadLine()[0];
 
-        Console.WriteLine("Digite o valor do produto: ");
-        registro.valor = double.Parse(Console.ReadLine());
+        Console.WriteLine("Digite um valor para número 2: ");
+        calculadora.num2 = double.Parse(Console.ReadLine());
 
-        registro.calculo();
-
+        calculadora.Calcular();
+        
     }
 }
