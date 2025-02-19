@@ -1,58 +1,44 @@
-﻿using System.Dynamic;
-using Microsoft.Win32;
+﻿using System;
 
+public class Animal{
 
-class Operacao{
-    public char operacao{get; set;}
-    public double num1{get; set;}
-    public double num2 {get; set;}
+  //Atributos
+  public String Nome {get; set;}
+  public int Idade {get; set;}
 
-    public void Calcular(){
-        switch(operacao){
-            case '+':
-                double soma = num1 + num2;
-                Console.WriteLine("O resultado da soma é " + soma);
-                break;
-            case '-':
-                double subtracao = num1 - num2;
-                Console.WriteLine("O resultado da subtração é " + subtracao);
-                break;
-            case '*':
-                double multiplicacao = num1 * num2;
-                Console.WriteLine("O resultado da multiplicação é " + multiplicacao);
-                break;
-            case '/':
-                if(num2 == 0){
-                    Console.WriteLine("ERRO!! Divisão por zero não será permitido!");
-                    return;
-                }else{
-                    double divisao = num1 / num2;
-                    Console.WriteLine("O resultado da divisão é " + divisao);
-                    break;
-                }
-            default:
-                Console.WriteLine("Nenhuma opção válida!!");
-                break;
-        }
-    }
+  public Animal(){
+    
+  }
+  public Animal(String nome, int idade){
+    this.Nome = nome;
+    this.Idade = idade;
+  }
+  
+  
 }
 
-public class Program{
-    public static void Main(string[] args)
-    {
-        
-        Operacao calculadora = new Operacao();
+class Program {
+  public static void Main (string[] args) {
+    Console.WriteLine("Criando os objetos");
+    Animal animal1 = new Animal();
+    animal1.Nome = "toby";
+    animal1.Idade = 3;
 
-        Console.WriteLine("Digite um valor para número 1: ");
-        calculadora.num1 = double.Parse(Console.ReadLine());
+    Console.WriteLine (animal1.Nome);
+    Console.WriteLine(animal1.Idade);
 
-        Console.WriteLine("Digite a operação desejada: ");
-        calculadora.operacao = Console.ReadLine()[0];
+    Animal animal2 = new Animal("totó",5);
+    Console.WriteLine ("Nome: " + animal2.Nome + " idade: " + animal2.Idade);
 
-        Console.WriteLine("Digite um valor para número 2: ");
-        calculadora.num2 = double.Parse(Console.ReadLine());
+    Animal animal3 = new Animal();
+    
+    Console.WriteLine("Digite o nome do animal: ");
+    animal3.Nome = Console.ReadLine();
 
-        calculadora.Calcular();
-        
-    }
+    Console.WriteLine("Digite a idade do animal: ");
+    animal3.Idade = int.Parse(Console.ReadLine());
+
+    Console.WriteLine("Nome " + animal3.Nome + " e tem " + animal3.Idade + " anos.");
+    
+  }
 }
