@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = pcdecasa
-build_property.ProjectDir = /home/edufbarreto/Documentos/Programação/logica/logica/ConsoleApp1/pcdecasa/
+build_property.ProjectDir = /home/edu/Documentos/programacao/logica/logica/ConsoleApp1/pcdecasa/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
