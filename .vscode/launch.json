@@ -5,6 +5,13 @@
       "type": "java",
       "name": "Main",
       "request": "launch",
+      "mainClass": "Main",
+      "projectName": "logica_ad456db4"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
       "mainClass": "output.Main",
       "projectName": "logica_2a665d7e"
     },
