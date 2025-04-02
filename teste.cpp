@@ -1,42 +1,64 @@
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
 
-using namespace std;
-
-class lados{
+class Animal{
     public:
-    int lado1, lado2, lado3;
-    lados(int lado1, int lado2, int lado3){
-        this -> lado1 = lado1;
-        this -> lado2 = lado2;
-        this -> lado3 = lado3;
+    std::string nome;
+
+    Animal(){}
+
+    virtual void exibirNome(){
+        std::cout<<"Animal"<<std::endl;
     }
-        void mensagem(){
-        if(lado1 == lado2 && lado1 == lado3){
-            std::cout<<"Triangulo equilatero!"<<std::endl;
-        }else if(lado1 != lado2 && lado2 != lado3){
-            std::cout<<"Triangulo Escaleno!"<<std::endl;
-        }else{
-            std::cout<<"Triangulo Isosceles!"<<std::endl;
-        }
+
+    virtual void fazerSom(){
+        std::cout<<"Som generico"<<std::endl;
+    }
+};
+
+class Cachorro : public Animal{
+    public:
+
+    Cachorro(){}
+
+    void exibirNome() override{
+        std::cout<<"Rex"<<std::endl;
+    }
+
+    void fazerSom() override{
+        std::cout<<"au au"<<std::endl;
+    }
+};
+
+class Gato : public Animal{
+    public:
+
+    Gato(){}
+
+    void exibirNome() override{
+        std::cout<<"Perebas"<<std::endl;
+    }
+
+    void fazerSom() override{
+        std::cout<<"Miauuu"<<std::endl;
     }
 };
 
 int main(){
 
-    int lado1, lado2, lado3;
+    Animal animal1;
+    Cachorro cachorro1;
+    Gato gato1;
 
-cout<<"Digite o lado1: "<<std::endl;
-cin>>lado1;
+    animal1.exibirNome();
+    animal1.fazerSom();
 
-    std::cout<<"Digite o lado2: "<<std::endl;
-    std::cin>>lado2;
+    cachorro1.exibirNome();
+    cachorro1.fazerSom();
 
-    std::cout<<"Digite o lado3: "<<std::endl;
-    std::cin>>lado3;
+    gato1.exibirNome();
+    gato1.fazerSom();
 
-    lados resultado(lado1, lado2, lado3);
-    resultado.mensagem();
 
     return 0;
 }
