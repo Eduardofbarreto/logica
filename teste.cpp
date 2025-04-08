@@ -1,14 +1,15 @@
 #include <iostream>
-#include<cmath>
+
 
 int main(){
 
-    using namespace std;
+    int idade = 19;
 
-    int x = 10;
-    int y = 4;
-
-    cout<< (x > y);
+    if(idade >= 18){
+        std::cout<<"Voce pode votar!";
+    } else {
+        std::cout<<"Voce ainda nao pode votar!!";
+    }
 
     return 0;
 }
