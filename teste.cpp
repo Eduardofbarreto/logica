@@ -6,8 +6,7 @@ int main(){
     using namespace std;
 
     string minhaString = "Hello";
-    minhaString[0] = 'J';
-    cout<<minhaString;
+    cout<<minhaString.length();
     cout<<"\n";
 
     return 0;
