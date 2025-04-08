@@ -3,11 +3,13 @@
 
 int main(){
 
-    std::string cars[5] = {"Volvo", "Bmw", "Ford", "Mazda", "Tesla"};
+    
+    int myNumbers[5] = {10, 20, 30, 40, 50};
 
-    for(int i = 0; i < 5; i++){
-        std::cout<<i<<" = "<<cars[i]<<std::endl;
+    for(int i : myNumbers){
+        std::cout<<i<<std::endl;
     }
+    
  
 
     return 0;
