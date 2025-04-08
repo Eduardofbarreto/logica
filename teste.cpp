@@ -5,8 +5,10 @@ int main(){
 
     using namespace std;
 
-    string txt = "Abcdefghijklmnopqrstuv";
-    cout<<txt[txt.length() - 1];
+    string minhaString = "Hello";
+    minhaString[0] = 'J';
+    cout<<minhaString;
+    cout<<"\n";
 
     return 0;
 }
