@@ -1,21 +1,23 @@
 #include <iostream>
-
+#include<string>
 
 int main(){
 
-    int numeros = 12;
+    std::string nome, sobrenome;
 
-    int numRev = 0;
+    std::cout<<"Digite seu nome: "<<std::endl;
+    std::getline(std::cin, nome);
 
-    while(numeros){
-        
-        numRev = numRev * 10 + numeros % 10;
-        numeros /= 10;
-    }
+    std::cout<<"Digite seu sobrenome: "<<std::endl;
+    std::getline(std::cin, sobrenome);
 
-    std::cout<<"Numeros reversos: "<<numRev<<"\n";
-
-
+    std::cout<<nome<<" "<<std::endl;
+    std::cout<<nome.length()<<std::endl;
+    std::cout<<nome.size()<<std::endl;
+    std::cout<<nome.at(0)<<std::endl;
+    nome.at(0) = 'P';
+    std::cout<<nome<<std::endl;
+ 
 
     return 0;
 }
