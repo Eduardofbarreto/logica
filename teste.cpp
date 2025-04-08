@@ -3,13 +3,10 @@
 
 int main(){
 
-    int idade = 19;
+   int idade = 23;
 
-    if(idade >= 18){
-        std::cout<<"Voce pode votar!";
-    } else {
-        std::cout<<"Voce ainda nao pode votar!!";
-    }
+   std::string resultado = (idade >= 18) ? "Pode votar" : "Nao pode votar";
+   std::cout<<resultado;
 
     return 0;
 }
