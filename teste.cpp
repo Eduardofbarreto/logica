@@ -3,10 +3,19 @@
 
 int main(){
 
-   int idade = 23;
+    int numeros = 12;
 
-   std::string resultado = (idade >= 18) ? "Pode votar" : "Nao pode votar";
-   std::cout<<resultado;
+    int numRev = 0;
+
+    while(numeros){
+        
+        numRev = numRev * 10 + numeros % 10;
+        numeros /= 10;
+    }
+
+    std::cout<<"Numeros reversos: "<<numRev<<"\n";
+
+
 
     return 0;
 }
