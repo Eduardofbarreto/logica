@@ -3,14 +3,15 @@
 
 int main(){
 
-    int tabNum;
-    int myNumbers[10] = {1,2,3,4,5,6,7,8,9,10};
+    std::string cars[5];
+    cars[0] = "Volvo";
+    cars[1] = "Bmw";
+    cars[2] = "Ford";
+    cars[3] = "Mazda";
+    cars[4] = "Tesla";
 
-    std::cout<<"Digite um numero ao qual queira fazer a tabuada: "<<std::endl;
-    std::cin>>tabNum;
-
-    for(int i : myNumbers){
-        std::cout<<tabNum<<" * "<<i<<" = "<<tabNum*i<<std::endl;
+    for(std::string car : cars){
+        std::cout<<car<<std::endl;
     }
     
  
