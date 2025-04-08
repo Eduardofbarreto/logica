@@ -4,14 +4,13 @@
 
 int main(){
 
-    std::vector<std::string>cars = {"Volvo", "Ferrari", "Audi"};
+    int numeros[5] = {10, 20, 30, 40, 50};
 
-    cars.push_back("Bugatti");
+    int getArrayLength = sizeof(numeros) / sizeof(numeros[0]);
 
-    for(std::string car : cars){
-        std::cout<<car<<std::endl;
-    }
-    
+    std::cout<<getArrayLength<<std::endl; // retorna o tamanho do array
+
+    std::cout<<sizeof(numeros); //retorna o tamanho do array em bytes.
  
 
     return 0;
