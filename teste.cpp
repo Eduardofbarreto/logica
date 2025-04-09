@@ -1,17 +1,16 @@
-#include <iostream>
-#include<string>
-#include<vector>
+#include<iostream>
+
 
 int main(){
 
-    int numeros[5] = {10, 20, 30, 40, 50};
+    std::string palavras[5] = {"casa", "papel", "chuva", "teclado", "mouse"};
+    std::string nome = "Eduardo";
 
-    int getArrayLength = sizeof(numeros) / sizeof(numeros[0]);
+    for(int i = 0; i <=4; i++){
+        std::cout<<palavras[i].append(" - ").append(nome)<<std::endl;
 
-    std::cout<<getArrayLength<<std::endl; // retorna o tamanho do array
+    }
 
-    std::cout<<sizeof(numeros); //retorna o tamanho do array em bytes.
- 
 
     return 0;
 }
