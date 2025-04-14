@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "teste",
+      "request": "launch",
+      "mainClass": "teste",
+      "projectName": "logica_a140e8d3"
+    },
+    {
+      "type": "java",
       "name": "Main",
       "request": "launch",
       "mainClass": "Main",

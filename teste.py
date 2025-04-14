@@ -1,91 +1,117 @@
-import sqlite3
+import psycopg2
 
-DATABASE = 'meubanco.db'
-TABLE_NAME = 'clientes'
+# Detalhes da conexão com o PostgreSQL
+DB_HOST = "localhost"  # Ou o endereço do seu servidor PostgreSQL
+DB_NAME = "postgres"        # Alterado para o nome do seu banco de dados
+DB_USER = "postgres"  # Substitua pelo seu nome de usuário PostgreSQL
+DB_PASSWORD = "root"  # Substitua pela sua senha PostgreSQL
 
 def conectar_db():
-    """Conecta ao banco de dados SQLite."""
+    """Conecta ao banco de dados PostgreSQL."""
     try:
-        conexao = sqlite3.connect(DATABASE)
-        return conexao
-    except sqlite3.Error as e:
+        conn = psycopg2.connect(host=DB_HOST, database=DB_NAME, user=DB_USER, password=DB_PASSWORD)
+        cur = conn.cursor()
+        return conn, cur
+    except psycopg2.Error as e:
         print(f"Erro ao conectar ao banco de dados: {e}")
-        return None
+        return None, None
 
-def criar_tabela(conexao):
-    """Cria a tabela 'clientes' se ela não existir."""
-    try:
-        cursor = conexao.cursor()
-        cursor.execute(f'''
-            CREATE TABLE IF NOT EXISTS {TABLE_NAME} (
-                nome TEXT
-            )
-        ''')
-        conexao.commit()
-        print(f"Tabela '{TABLE_NAME}' criada com sucesso (se não existia).")
-    except sqlite3.Error as e:
-        print(f"Erro ao criar a tabela: {e}")
+def cadastrar_pessoa(nome, idade):
+    """Cadastra uma nova pessoa no banco de dados."""
+    conn, cur = conectar_db()
+    if conn:
+        try:
+            sql = "INSERT INTO pessoas (nome, idade) VALUES (%s, %s)"
+            cur.execute(sql, (nome, idade))
+            conn.commit()
+            print(f"Pessoa '{nome}' cadastrada com sucesso.")
+        except psycopg2.Error as e:
+            conn.rollback()
+            print(f"Erro ao cadastrar pessoa: {e}")
+        finally:
+            cur.close()
+            conn.close()
 
-def adicionar_nome(conexao, nome):
-    """Adiciona um nome ao banco de dados."""
-    try:
-        cursor = conexao.cursor()
-        cursor.execute(f"INSERT INTO {TABLE_NAME} (nome) VALUES (?)", (nome,))
-        conexao.commit()
-        print(f"Nome '{nome}' adicionado com sucesso.")
-    except sqlite3.Error as e:
-        print(f"Erro ao adicionar o nome: {e}")
+def listar_pessoas():
+    """Lista todas as pessoas cadastradas no banco de dados."""
+    conn, cur = conectar_db()
+    if conn:
+        try:
+            sql = "SELECT id, nome, idade FROM pessoas ORDER BY id"
+            cur.execute(sql)
+            pessoas = cur.fetchall()
+            if pessoas:
+                print("\n--- Pessoas Cadastradas ---")
+                for pessoa in pessoas:
+                    print(f"ID: {pessoa[0]}, Nome: {pessoa[1]}, Idade: {pessoa[2]}")
+                print("---------------------------\n")
+            else:
+                print("Nenhuma pessoa cadastrada ainda.\n")
+        except psycopg2.Error as e:
+            print(f"Erro ao listar pessoas: {e}")
+        finally:
+            cur.close()
+            conn.close()
 
-def consultar_nomes(conexao, filtro=None):
-    """Consulta nomes no banco de dados com um filtro opcional."""
-    try:
-        cursor = conexao.cursor()
-        sql = f"SELECT nome FROM {TABLE_NAME}"
-        if filtro:
-            sql += f" WHERE nome LIKE ?"
-            cursor.execute(sql, ('%' + filtro + '%',))
-        else:
-            cursor.execute(sql)
-
-        resultados = cursor.fetchall()
-        if resultados:
-            print("\nNomes encontrados:")
-            for linha in resultados:
-                print(linha[0])
-        else:
-            print("Nenhum nome encontrado com o critério fornecido." if filtro else "Nenhum nome encontrado no banco de dados.")
-    except sqlite3.Error as e:
-        print(f"Erro ao consultar nomes: {e}")
+def excluir_pessoa(pessoa_id):
+    """Exclui uma pessoa do banco de dados pelo ID."""
+    conn, cur = conectar_db()
+    if conn:
+        try:
+            sql = "DELETE FROM pessoas WHERE id = %s"
+            cur.execute(sql, (pessoa_id,))
+            conn.commit()
+            if cur.rowcount > 0:
+                print(f"Pessoa com ID {pessoa_id} excluída com sucesso.")
+            else:
+                print(f"Nenhuma pessoa encontrada com o ID {pessoa_id}.")
+        except psycopg2.Error as e:
+            conn.rollback()
+            print(f"Erro ao excluir pessoa: {e}")
+        finally:
+            cur.close()
+            conn.close()
 
 def main():
-    conexao = conectar_db()
-    if not conexao:
-        return
-
-    criar_tabela(conexao)
-
     while True:
-        print("\nOpções:")
-        print("1 - Adicionar um nome")
-        print("2 - Consultar nomes")
-        print("3 - Sair")
+        print("\n--- Menu ---")
+        print("1. Cadastrar Pessoa")
+        print("2. Listar Pessoas")
+        print("3. Excluir Pessoa")
+        print("4. Sair")
 
         opcao = input("Escolha uma opção: ")
 
-        if opcao == '1':
-            nome_para_adicionar = input("Digite o nome que deseja adicionar: ")
-            adicionar_nome(conexao, nome_para_adicionar)
-        elif opcao == '2':
-            filtro_consulta = input("Digite um termo para filtrar a consulta (ou deixe em branco para listar todos): ")
-            consultar_nomes(conexao, filtro_consulta)
-        elif opcao == '3':
+        if opcao == "1":
+            nome = input("Digite o nome da pessoa: ")
+            while True:
+                try:
+                    idade_str = input("Digite a idade da pessoa: ")
+                    idade = int(idade_str)
+                    if idade >= 0:
+                        break
+                    else:
+                        print("A idade não pode ser negativa.")
+                except ValueError:
+                    print("Por favor, digite um número inteiro válido para a idade.")
+            cadastrar_pessoa(nome, idade)
+        elif opcao == "2":
+            listar_pessoas()
+        elif opcao == "3":
+            listar_pessoas()  # Mostrar a lista antes de excluir
+            while True:
+                id_excluir_str = input("Digite o ID da pessoa que deseja excluir: ")
+                try:
+                    id_excluir = int(id_excluir_str)
+                    excluir_pessoa(id_excluir)
+                    break
+                except ValueError:
+                    print("Por favor, digite um número inteiro válido para o ID.")
+        elif opcao == "4":
+            print("Saindo do programa.")
             break
         else:
             print("Opção inválida. Tente novamente.")
-
-    if conexao:
-        conexao.close()
-        print("Conexão com o banco de dados fechada.")
 
 if __name__ == "__main__":
     main()
