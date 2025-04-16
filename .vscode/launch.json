@@ -36,8 +36,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/edufbarreto/Documentos/Programação/logica",
-      "program": "/home/edufbarreto/Documentos/Programação/logica/build/Debug/outDebug",
+      "cwd": "/home/edu/Documentos/dev/logica",
+      "program": "/home/edu/Documentos/dev/logica/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
