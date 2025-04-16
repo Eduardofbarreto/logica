@@ -3,12 +3,16 @@
 
 int main(){
 
-    std::string cars[3] = {"Gol", "Fusca", "Fox"};
+    struct{
+        int myNum;
+        std::string myString;
+    } myStructure;
 
-    for(std::string car : cars){
-        std::cout<<"O "<<car<<" e um excelente carro!!"<<std::endl;
-    }
+    myStructure.myNum = 1;
+    myStructure.myString = "Ola mundo!";
 
+    std::cout<<myStructure.myNum<<std::endl;
+    std::cout<<myStructure.myString<<std::endl;
 
     return 0;
 }
