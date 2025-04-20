@@ -1,21 +1,25 @@
 #include <iostream>
 #include <string>
 
-struct Calculo{
-    int num1, num2;
-    int resultado = num1 + num2;
+class Calculo{
+    public:
+    int num1, num2, soma;
+
+    Calculo(){}
+
+    virtual void Resolver(){
+        soma = num1 + num2;
+        std::cout<<soma<<std::endl;
+    }
 };
 
 int main(){
-Calculo meuCalculo;
 
-std::cout<<"Digite um valor para num1: "<<std::endl;
-std::cin>>meuCalculo.num1;
+    Calculo meuCalculo1;
+    meuCalculo1.num1 = 12;
+    meuCalculo1.num2 = 4;
 
-std::cout<<"Digite um valor para num2: "<<std::endl;
-std::cin>>meuCalculo.num2;
-
-std::cout<<"O resultado e: "<<meuCalculo.resultado<<std::endl;
+    meuCalculo1.Resolver();
 
 
 return 0;
