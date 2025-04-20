@@ -1,29 +1,23 @@
-#include<iostream>
-#include<string>
+#include <iostream>
 
-struct car{
-    int year;
-    std::string name;
+enum Level {
+    LOW,
+    MEDIUM,
+    HIGH
 };
 
-int main(){
+int main() {
+    Level currentLevel;
+    Level alertLevel = HIGH;
 
-    car myCar1;
-    myCar1.name = "Bmw";
-    myCar1.year = 2023;
+    currentLevel = LOW;
+    std::cout << "Nível atual: " << currentLevel << std::endl; // Saída: Nível atual: 0
+    std::cout << "Nível de alerta: " << alertLevel << std::endl; // Saída: Nível de alerta: 2
 
-    car myCar2;
-    std::cout<<"Digite o nome do carro: "<<std::endl;
-    std::cin>>myCar2.name;
-
-    std::cout<<"Digite o ano do carro: "<<std::endl;
-    std::cin>>myCar2.year;
-
-    std::cout<<"O nome dos carros sao: "<<myCar1.name<<" e "<<myCar2.name<<"."<<std::endl;
-    std::cout<<"Os anos dos carros sao: "<<myCar1.year<<" e "<<myCar2.year<<"."<<std::endl;
-
-
-
+    currentLevel = MEDIUM;
+    if (currentLevel == MEDIUM) {
+        std::cout << "O nível atual é médio." << std::endl;
+    }
 
     return 0;
 }
