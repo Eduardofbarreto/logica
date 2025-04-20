@@ -1,49 +1,26 @@
 #include <iostream>
 #include <string>
 
-enum Level {
-    LOW,
-    MEDIUM,
-    HIGH
-};
+int main(){
 
-enum Status {
-    ATIVO,
-    INATIVO,
-    PENDENTE
-};
+    struct{
+        int num1, num2, soma;
+        std::string nome;
+    } minhaEstrutura;
 
-struct Tarefa {
-    std::string descricao;
-    Status estado;
-    Level prioridade; // Usando o enum Level definido anteriormente
+    std::cout<<"Digite o seu nome: "<<std::endl;
+    std::cin>>minhaEstrutura.nome;
 
-    void exibir_status() const {
-        std::string status_str;
-        switch (estado) {
-            case ATIVO:
-                status_str = "Ativa";
-                break;
-            case INATIVO:
-                status_str = "Inativa";
-                break;
-            case PENDENTE:
-                status_str = "Pendente";
-                break;
-            default:
-                status_str = "Desconhecido";
-                break;
-        }
-        std::cout << "Tarefa: " << descricao << ", Status: " << status_str << ", Prioridade: " << prioridade << std::endl;
-    }
-};
+    std::cout<<"Digite um valor para num1: "<<std::endl;
+    std::cin>>minhaEstrutura.num1;
 
-int main() {
-    Tarefa minha_tarefa;
-    minha_tarefa.descricao = "Implementar funcionalidade X";
-    minha_tarefa.estado = ATIVO;
-    minha_tarefa.prioridade = HIGH;
-    minha_tarefa.exibir_status();
+    std::cout<<"Digite um valor para num2: "<<std::endl;
+    std::cin>>minhaEstrutura.num2;
 
-    return 0;
+    minhaEstrutura.soma = minhaEstrutura.num1 + minhaEstrutura.num2;
+
+    std::cout<<"Seu nome e: "<<std::endl;
+    std::cout<<"O resultado da soma e: "<<minhaEstrutura.soma<<std::endl;
+
+return 0;
 }
