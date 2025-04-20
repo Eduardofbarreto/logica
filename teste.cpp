@@ -1,21 +1,29 @@
 #include<iostream>
 #include<string>
 
+struct car{
+    int year;
+    std::string name;
+};
+
 int main(){
 
-    struct{
-        int num1, num2, soma;
-    } minhaEstrutura;
+    car myCar1;
+    myCar1.name = "Bmw";
+    myCar1.year = 2023;
 
-    std::cout<<"Digite um valor para num1: "<<std::endl;
-    std::cin>>minhaEstrutura.num1;
+    car myCar2;
+    std::cout<<"Digite o nome do carro: "<<std::endl;
+    std::cin>>myCar2.name;
 
-    std::cout<<"Digite um valor para num2: "<<std::endl;
-    std::cin>>minhaEstrutura.num2;
+    std::cout<<"Digite o ano do carro: "<<std::endl;
+    std::cin>>myCar2.year;
 
-    minhaEstrutura.soma = minhaEstrutura.num1 + minhaEstrutura.num2;
+    std::cout<<"O nome dos carros sao: "<<myCar1.name<<" e "<<myCar2.name<<"."<<std::endl;
+    std::cout<<"Os anos dos carros sao: "<<myCar1.year<<" e "<<myCar2.year<<"."<<std::endl;
 
-    std::cout<<"O resultado e: "<<minhaEstrutura.soma<<std::endl;
+
+
 
     return 0;
 }
