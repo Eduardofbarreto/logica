@@ -1,23 +1,17 @@
 #include <iostream>
 
 enum Level {
-    LOW,
-    MEDIUM,
-    HIGH
-};
+    LOW = 25,
+    MEDIUM = 50,
+    HIGH = 75
+  };
 
-int main() {
-    Level currentLevel;
-    Level alertLevel = HIGH;
 
-    currentLevel = LOW;
-    std::cout << "Nível atual: " << currentLevel << std::endl; // Saída: Nível atual: 0
-    std::cout << "Nível de alerta: " << alertLevel << std::endl; // Saída: Nível de alerta: 2
+int main(){
 
-    currentLevel = MEDIUM;
-    if (currentLevel == MEDIUM) {
-        std::cout << "O nível atual é médio." << std::endl;
-    }
+    enum Level myVar = MEDIUM;
+
+    std::cout<<myVar<<std::endl;
 
     return 0;
 }
