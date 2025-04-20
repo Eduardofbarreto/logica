@@ -1,33 +1,45 @@
 #include <iostream>
 #include <string>
 
-class Calculo{
+class Somar{
     public:
     int num1, num2, soma;
 
-    Calculo(){}
+    Somar(){}
 
-    virtual void Resolver(){
+    virtual void Calcular(){
         soma = num1 + num2;
         std::cout<<soma<<std::endl;
     }
 };
 
+class Subtrair : public Somar{
+    public:
+    int num1, num2, subt;
+
+    Subtrair(){}
+
+    void Calcular() override{
+        subt = num1 - num2;
+        std::cout<<subt<<std::endl;
+    }
+};
+
+
 int main(){
 
-    Calculo meuCalculo1;
-    Calculo meuCalculo2;
+    Somar minhaSoma;
+    Subtrair minhaSubt;
 
-    meuCalculo1.num1 = 12;
-    meuCalculo1.num2 = 4;
+    minhaSoma.num1 = 8;
+    minhaSoma.num2 = 3;
+    minhaSubt.num1 = 8;
+    minhaSubt.num2 = 3;
 
-    meuCalculo2.num1 = 123;
-    meuCalculo2.num2 = 38;
-
-
-    meuCalculo1.Resolver();
-    meuCalculo2.Resolver();
+    minhaSoma.Calcular();
+    minhaSubt.Calcular();
 
 
-return 0;
+
+    return 0;
 }
