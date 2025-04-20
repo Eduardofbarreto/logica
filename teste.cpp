@@ -16,10 +16,17 @@ class Calculo{
 int main(){
 
     Calculo meuCalculo1;
+    Calculo meuCalculo2;
+
     meuCalculo1.num1 = 12;
     meuCalculo1.num2 = 4;
 
+    meuCalculo2.num1 = 123;
+    meuCalculo2.num2 = 38;
+
+
     meuCalculo1.Resolver();
+    meuCalculo2.Resolver();
 
 
 return 0;
