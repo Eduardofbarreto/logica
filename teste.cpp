@@ -3,9 +3,10 @@
 
 int main(){
 
-    int num = 4;
+    int numero = 10;     // Declara uma variável inteira
+    int &num = numero;
 
-    std::cout<<&num<<std::endl;
+    std::cout<<num<<std::endl;
 
     return 0;
 }
