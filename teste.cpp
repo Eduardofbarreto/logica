@@ -1,12 +1,16 @@
 #include <iostream>
 
+int Soma(int a, int b){
+    return a + b;
+}
 
 int main(){
 
-    int numero = 10;     // Declara uma variável inteira
-    int &num = numero;
+    int a = 4;
+    int b = 6;
+    int resultado = Soma(a, b);
 
-    std::cout<<num<<std::endl;
+    std::cout<<resultado<<std::endl;
 
     return 0;
 }
