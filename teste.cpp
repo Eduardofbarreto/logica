@@ -1,16 +1,16 @@
 #include <iostream>
 
-int Soma(int a, int b){
-    return a + b;
+void minhaFuncao(){
+    int a = 5;
+    int b = 6;
+    int soma;
+    soma = a + b;
+    std::cout<<soma<<std::endl;
 }
 
 int main(){
 
-    int a = 4;
-    int b = 6;
-    int resultado = Soma(a, b);
-
-    std::cout<<resultado<<std::endl;
+    minhaFuncao();
 
     return 0;
 }
