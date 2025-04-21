@@ -1,43 +1,31 @@
-#include <iostream>
-#include <string>
+#include<iostream>
+#include<string>
 
-class Somar{
+class Padrao{
     public:
-    int num1, num2, soma;
+    std::string nome;
+    int idade;
 
-    Somar(){}
+    Padrao(){}
 
-    virtual void Calcular(){
-        soma = num1 + num2;
-        std::cout<<soma<<std::endl;
+    virtual void gravarInfo(){
+        std::cout<<"Qual seu nome: "<<std::endl;
+        std::getline(std::cin, nome);
+        std::cout<<"Qual sua idade: "<<std::endl;
+        std::cin>>idade;
+    }
+
+    virtual void exibirInfor(){
+        std::cout<<"O nome e: "<<nome<<"."<<std::endl;
+        std::cout<<"A idade e: "<<idade<<"."<<std::endl;
     }
 };
-
-class Subtrair : public Somar{
-    public:
-    int num1, num2, subt;
-
-    Subtrair(){}
-
-    void Calcular() override{
-        subt = num1 - num2;
-        std::cout<<subt<<std::endl;
-    }
-};
-
 
 int main(){
 
-    Somar minhaSoma;
-    Subtrair minhaSubt;
-
-    minhaSoma.num1 = 8;
-    minhaSoma.num2 = 3;
-    minhaSubt.num1 = 8;
-    minhaSubt.num2 = 3;
-
-    minhaSoma.Calcular();
-    minhaSubt.Calcular();
+    Padrao meuPadrao;
+    meuPadrao.gravarInfo();
+    meuPadrao.exibirInfor();
 
 
 
