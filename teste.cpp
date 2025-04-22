@@ -1,23 +1,43 @@
 #include <iostream>
 #include<string>
 
-void Aprensentacao(std::string nome, int idade){
-    std::cout<<"Bem-vindo "<<nome<<"!"<<std::endl;
-    std::cout<<"Voce tem "<<idade<<" anos!"<<std::endl;
-}
+class Carro{
+    public:
+    std::string nome;
+    std::string cor;
+
+    Carro(){}
+
+    void Acelerar(){
+        std::cout<<"O "<<nome<<" "<<cor<<" esta andando a 40km/h."<<std::endl;
+    }
+
+    void Frear(){
+        std::cout<<"O "<<nome<<" "<<cor<<" esta parando."<<std::endl;
+    }
+};
 
 int main(){
 
-    std::string nome;
-    int idade;
+    int op;
 
-    std::cout<<"Digite seu nome: "<<std::endl;
-    std::cin>>nome;
+    Carro meuCarro;
 
-    std::cout<<"Digite a sua idade: "<<std::endl;
-    std::cin>>idade;
+    std::cout<<"Digite o nome do carro: "<<std::endl;
+    std::cin>>meuCarro.nome;
 
-    Aprensentacao(nome, idade);
+    std::cout<<"Digite a cor do carro: "<<std::endl;
+    std::cin>>meuCarro.cor;
+
+    std::cout<<"Digite 1 ou 2: "<<std::endl;
+    std::cin>>op;
+
+    if(op == 1){
+        meuCarro.Acelerar();
+    }else{
+        meuCarro.Frear();
+    }
+
 
     return 0;
 }
