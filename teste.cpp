@@ -1,16 +1,18 @@
 #include <iostream>
+#include<string>
 
-void minhaFuncao(){
-    int a = 5;
-    int b = 6;
-    int soma;
-    soma = a + b;
-    std::cout<<soma<<std::endl;
+void Aprensentacao(std::string nome){
+    std::cout<<"Bem-vindo "<<nome<<"!"<<std::endl;
 }
 
 int main(){
 
-    minhaFuncao();
+    std::string nome;
+
+    std::cout<<"Digite seu nome: "<<std::endl;
+    std::cin>>nome;
+
+    Aprensentacao(nome);
 
     return 0;
 }
