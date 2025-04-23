@@ -1,16 +1,17 @@
 #include <iostream>
 #include<string>
 
-void minhaFuncao(std::string nomes){
-    std::cout<<nomes<<std::endl;
+void myFunction(std::string country = "Usa"){
+    std::cout<<country<<std::endl;
 }
 
 int main(){
 
-    minhaFuncao("Eduardo");
-    minhaFuncao("Casa");
-    minhaFuncao("teste");
-    minhaFuncao("Olaaaaaaa!!");
+    myFunction();
+    myFunction("Brasil");
+    myFunction("Franca");
+    myFunction();
+    
 
     return 0;
 }
