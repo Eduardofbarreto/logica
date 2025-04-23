@@ -1,13 +1,25 @@
 #include <iostream>
 #include<string>
 
-int myFunction(int x, int y){
-    return y + x;
+void swapNums(int &x, int &y){
+    int z = x;
+    x = y;
+    y = z;
 }
 
 int main(){
 
-    std::cout<<myFunction(3, 5)<<std::endl;
+    int firstNum = 10;
+    int secondNum = 20;
+
+    std::cout<<"Before swap: "<<std::endl;
+    std::cout<<firstNum<<secondNum<<std::endl;
+
+    swapNums(firstNum, secondNum);
+
+    std::cout<<"After swap: "<<std::endl;
+    std::cout<<firstNum<<secondNum<<std::endl;
+
 
 
     return 0;
