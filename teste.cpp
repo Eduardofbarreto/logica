@@ -1,26 +1,15 @@
 #include <iostream>
-#include<string>
 
-void swapNums(int &x, int &y){
-    int z = x;
-    x = y;
-    y = z;
+using namespace std;
+
+int soma(int a, int b){
+    return a + b;
 }
 
 int main(){
 
-    int firstNum = 10;
-    int secondNum = 20;
-
-    std::cout<<"Before swap: "<<std::endl;
-    std::cout<<firstNum<<secondNum<<std::endl;
-
-    swapNums(firstNum, secondNum);
-
-    std::cout<<"After swap: "<<std::endl;
-    std::cout<<firstNum<<secondNum<<std::endl;
-
-
+    int resultado = soma(3,4);
+    cout<<resultado;
 
     return 0;
 }
