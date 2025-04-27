@@ -2,13 +2,21 @@
 
 using namespace std;
 
-int soma(int a, int b){
-    return a + b;
+int multi(int a, int b){
+    return a * b;
 }
 
 int main(){
 
-    int resultado = soma(3,4);
+    int a, b, resultado;
+
+    cout<<"Digite um valor para a: ";
+    cin>>a;
+    cout<<"Digite um valor para b: ";
+    cin>>b;
+
+    resultado = multi(a, b);
+
     cout<<resultado;
 
     return 0;
