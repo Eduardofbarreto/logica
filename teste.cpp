@@ -15,6 +15,9 @@ int main(){
 
     saudacao(nome);
     cout<<"\n";
+    saudacao("AAA");
+    cout<<"\n";
+    saudacao("BBB");
 
     return 0;
 }
