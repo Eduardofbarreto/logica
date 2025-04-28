@@ -1,23 +1,21 @@
-#include <iostream>
+#include<iostream>
 
 using namespace std;
 
-int multi(int a, int b){
-    return a * b;
+int plusFuncInt(int x, int y){
+    return x + y;
+}
+
+double plusFuncDouble(double x, double y){
+    return x + y;
 }
 
 int main(){
 
-    int a, b, resultado;
-
-    cout<<"Digite um valor para a: ";
-    cin>>a;
-    cout<<"Digite um valor para b: ";
-    cin>>b;
-
-    resultado = multi(a, b);
-
-    cout<<resultado;
+    int myNum1 = plusFuncInt(8, 5);
+    double myNum2 = plusFuncDouble(4.3, 6.26);
+    cout<<"Int: "<<myNum1<<"\n";
+    cout<<"Double: "<<myNum2<<"\n";
 
     return 0;
 }
