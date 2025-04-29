@@ -2,22 +2,23 @@
 
 using namespace std;
 
-void saudacao(string nome){
-    cout<<"Bem-vindo "<<nome;
+int soma(int a, int b){
+    return a + b;
 }
 
 int main(){
 
-    string nome;
+    int a, b, resultado;
 
-    cout<<"Digite um nome: ";
-    cin>>nome;
+    cout<<"Digite um valor para a: ";
+    cin>>a;
 
-    saudacao(nome);
-    cout<<"\n";
-    saudacao("AAA");
-    cout<<"\n";
-    saudacao("BBB");
+    cout<<"Digite um valor para b: ";
+    cin>>b;
+
+    resultado = soma(a,b);
+
+    cout<<"O resultado de: "<<a<<" + "<<b<<" = "<<resultado;
 
     return 0;
 }
