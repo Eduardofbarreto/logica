@@ -1,17 +1,18 @@
 #include<iostream>
 #include<string>
 
-class myClass{
+class Car{
     public:
-        void myMethod(){
-            std::cout<<"Hello World"<<std::endl;
-        }
+        int speed(int maxSpeed);
 };
 
-int main(){
+int Car::speed(int maxSpeed){
+    return maxSpeed;
+}
 
-    myClass myObj; //Create an object of myClass
-    myObj.myMethod(); //Call the method
+int main(){
+    Car myObj;
+    std::cout<<myObj.speed(200);
 
     return 0;
 }
