@@ -1,32 +1,17 @@
 #include<iostream>
 #include<string>
 
-class Car{
+class myClass{
     public:
-        std::string brand;
-        std::string model;
-        int year;
+        void myMethod(){
+            std::cout<<"Hello World"<<std::endl;
+        }
 };
 
 int main(){
 
-    Car carObj1;
-    carObj1.brand = "BMW";
-    carObj1.model = "X5";
-    carObj1.year = 1999;
-
-    //Criando outro objeto de carro
-
-    Car carObj2;
-    carObj2.brand = "Ford";
-    carObj2.model = "Mustang";
-    carObj2.year = 1969;
-
-    std::cout<<carObj1.brand<<" "<<carObj1.model<<" "<<
-    carObj1.year<<std::endl;
-    
-    std::cout<<carObj2.brand<<" "<<carObj2.model<<" "<<
-    carObj2.year<<std::endl;
+    myClass myObj; //Create an object of myClass
+    myObj.myMethod(); //Call the method
 
     return 0;
 }
