@@ -2,21 +2,17 @@
 
 using namespace std;
 
-void minhaFuncao(){
-    int x = 10;
-    cout<<x + 5;
-}
+int x = 5; //global variable x
 
-void minhaFuncao1(){
-    int y = 4;
-    cout<<y * 2;
+void myFunction(){
+    cout<<x++<<"\n";
 }
 
 int main(){
 
-    minhaFuncao();
-    cout<<"\n";
-    minhaFuncao1();
+    myFunction();
+
+    cout<<x;
 
     return 0;
 }
