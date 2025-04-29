@@ -2,23 +2,21 @@
 
 using namespace std;
 
-int soma(int a, int b){
-    return a + b;
+void minhaFuncao(){
+    int x = 10;
+    cout<<x + 5;
+}
+
+void minhaFuncao1(){
+    int y = 4;
+    cout<<y * 2;
 }
 
 int main(){
 
-    int a, b, resultado;
-
-    cout<<"Digite um valor para a: ";
-    cin>>a;
-
-    cout<<"Digite um valor para b: ";
-    cin>>b;
-
-    resultado = soma(a,b);
-
-    cout<<"O resultado de: "<<a<<" + "<<b<<" = "<<resultado;
+    minhaFuncao();
+    cout<<"\n";
+    minhaFuncao1();
 
     return 0;
 }
