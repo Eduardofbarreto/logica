@@ -2,17 +2,18 @@
 
 using namespace std;
 
-int x = 5;
-
-void myFunction(){
-    cout<<x<<"\n";
+int sum(int k){
+    if(k > 0){
+        return k + sum(k - 1);
+    } else {
+        return 0;
+    }
 }
 
 int main(){
 
-    myFunction();
-
-    cout<<x;
+    int result = sum(4);
+    cout<<result;
 
     return 0;
 }
