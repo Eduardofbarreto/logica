@@ -2,10 +2,10 @@
 
 using namespace std;
 
-int x = 5; //global variable x
+int x = 5;
 
 void myFunction(){
-    cout<<x++<<"\n";
+    cout<<x<<"\n";
 }
 
 int main(){
