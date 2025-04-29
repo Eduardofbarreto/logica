@@ -1,19 +1,22 @@
 #include<iostream>
+#include<string>
 
-using namespace std;
+//vamos usar std:: agora
 
-int sum(int k){
-    if(k > 0){
-        return k + sum(k - 1);
-    } else {
-        return 0;
-    }
-}
+class myClass{
+    public:
+    int myNum;
+    std::string myString;
+};
 
 int main(){
+    myClass myObj;
 
-    int result = sum(4);
-    cout<<result;
+    myObj.myNum = 15;
+    myObj.myString = "Texto";
+
+    std::cout<<myObj.myNum<<std::endl;
+    std::cout<<myObj.myString<<std::endl;
 
     return 0;
 }
