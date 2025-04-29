@@ -1,22 +1,32 @@
 #include<iostream>
 #include<string>
 
-//vamos usar std:: agora
-
-class myClass{
+class Car{
     public:
-    int myNum;
-    std::string myString;
+        std::string brand;
+        std::string model;
+        int year;
 };
 
 int main(){
-    myClass myObj;
 
-    myObj.myNum = 15;
-    myObj.myString = "Texto";
+    Car carObj1;
+    carObj1.brand = "BMW";
+    carObj1.model = "X5";
+    carObj1.year = 1999;
 
-    std::cout<<myObj.myNum<<std::endl;
-    std::cout<<myObj.myString<<std::endl;
+    //Criando outro objeto de carro
+
+    Car carObj2;
+    carObj2.brand = "Ford";
+    carObj2.model = "Mustang";
+    carObj2.year = 1969;
+
+    std::cout<<carObj1.brand<<" "<<carObj1.model<<" "<<
+    carObj1.year<<std::endl;
+    
+    std::cout<<carObj2.brand<<" "<<carObj2.model<<" "<<
+    carObj2.year<<std::endl;
 
     return 0;
 }
