@@ -1,21 +1,16 @@
 #include<iostream>
 #include<string>
 
-class myClass{
+class MyClass{
     public:
-    int num1 = 5;
-    int num2 = 2;
-    void myMethod();
+        MyClass(){
+            std::cout<<"Olá mundo!";
+        }
 };
 
-void myClass::myMethod(){
-    std::cout<<num1<<" + "<<num2<<" = "<<num1 + num2<<std::endl;
-}
-
 int main(){
-
-    myClass Obj1;
-    Obj1.myMethod();
-
+    
+    MyClass myObj;
+    
     return 0;
 }
