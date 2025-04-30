@@ -10,8 +10,8 @@ class Carro{
     int ano;
     double valor;
 
-    Carro(std::string m, std::string mod, int a, double v):
-        marca(m), modelo(mod), ano(a), valor(v){}
+    
+    Carro(){}
 };
 
 int main(){
@@ -33,7 +33,11 @@ int main(){
     std::cout<<"Digite o valor do veículo: "<<std::endl;
     std::cin>>cValor;
 
-    Carro(cMarca, cModelo, cAno, cValor);
+    Carro meuCarro;
+    meuCarro.marca = cMarca;
+    meuCarro.modelo = cModelo;
+    meuCarro.ano = cAno;
+    meuCarro.valor = cValor;
 
     std::cout<<"\nInformações sobre o veículo: "<<std::endl;
     std::cout<<"Marca: "<<cMarca<<std::endl;
