@@ -6,13 +6,14 @@ class Car{
     std::string brand;
     std::string model;
     int year;
-
-    Car(std::string x, std::string y, int z){
-        brand = x;
-        model = y;
-        year = z;
-    }
+    Car(std::string x, std::string y, int z);
 };
+
+Car::Car(std::string x, std::string y, int z){
+    brand = x;
+    model = y;
+    year = z;
+}
 
 int main(){
 
