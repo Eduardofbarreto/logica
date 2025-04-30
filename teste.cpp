@@ -10,12 +10,8 @@ class Carro{
     int ano;
     double valor;
 
-    Carro(std::string m, std::string mod, int a, double v){
-        marca = m;
-        modelo = mod;
-        ano = a;
-        valor = v;
-    }
+    Carro(std::string m, std::string mod, int a, double v):
+        marca(m), modelo(mod), ano(a), valor(v){}
 };
 
 int main(){
