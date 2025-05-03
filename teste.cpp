@@ -1,25 +1,24 @@
-#include <iostream>
+#include<iostream>
 
-class Empregar{
+class Conta{
     private:
-    int salario;
+    int saldo;
 
     public:
-    //setter
-    void mostrarSalario(int s){
-        salario = s;
+    void setSaldo(int s){
+        saldo = s;
     }
-    //Getter
-    int mostrarSalario(){
-        return salario;
+
+    int getSaldo(){
+        return saldo;
     }
 };
 
 int main(){
 
-    Empregar meuObj;
-    meuObj.mostrarSalario(4500);
-    std::cout<<meuObj.mostrarSalario();
+    Conta meuObj;
+    meuObj.setSaldo(4000);
+    std::cout<<meuObj.getSaldo()<<std::endl;
 
     return 0;
 }
