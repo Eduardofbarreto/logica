@@ -1,27 +1,33 @@
 #include<iostream>
 #include<string>
 
-class Coisas{
+class Calculo{
     public:
-    std::string nome;
+    int num1, num2, soma;
 
-    Coisas(){}
+    Calculo(int a, int b) : num1(a), num2(b), soma(0){}
 
-    void coletarNome(){
-        std::cout<<"Digite o nome: "<<std::endl;
-        std::cin>>nome;
+    /*
+    void ColetarDados(){
+        std::cout<<"Digite um valor para num1: "<<std::endl;
+        std::cin>>num1;
+
+        std::cout<<"Digite um valor para num2: "<<std::endl;
+        std::cin>>num2;
     }
+    */
 
-    void exibirNome(){
-        std::cout<<"O nome é: "<<nome<<std::endl;
+    void Resolver(){
+        soma = num1 + num2;
+        std::cout<<"O resultado é: "<<soma<<std::endl;
     }
 };
 
 int main(){
 
-    Coisas meuObj;
-    meuObj.coletarNome();
-    meuObj.exibirNome();
+    Calculo meuObj(3,2);
+    //meuObj.ColetarDados();
+    meuObj.Resolver();
 
     return 0;
 }
