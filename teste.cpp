@@ -1,24 +1,27 @@
 #include<iostream>
+#include<string>
 
-class Conta{
-    private:
-    int saldo;
-
+class Coisas{
     public:
-    void setSaldo(int s){
-        saldo = s;
+    std::string nome;
+
+    Coisas(){}
+
+    void coletarNome(){
+        std::cout<<"Digite o nome: "<<std::endl;
+        std::cin>>nome;
     }
 
-    int getSaldo(){
-        return saldo;
+    void exibirNome(){
+        std::cout<<"O nome é: "<<nome<<std::endl;
     }
 };
 
 int main(){
 
-    Conta meuObj;
-    meuObj.setSaldo(4000);
-    std::cout<<meuObj.getSaldo()<<std::endl;
+    Coisas meuObj;
+    meuObj.coletarNome();
+    meuObj.exibirNome();
 
     return 0;
 }
