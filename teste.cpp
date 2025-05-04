@@ -1,32 +1,48 @@
-#include<iostream>
-#include<string>
-#include<locale>
+#include <iostream>
+#include <string>
 #include<iomanip>
+#include<locale>
 
-class Produto{
+class Carro{
     public:
-    std::string nome;
+    std::string marca;
+    std::string modelo;
+    int ano;
     double valor;
 
-    Produto(std::string n, double v) :
-        nome(n), valor(v) {}
+    Carro(){}
 
-    void informacoes(){
-        std::cout<<"Nome do produto "<<nome<<std::endl;
-        std::cout<<"Preço: R$ "<<std::fixed<<std::setprecision(2)<<valor<<std::endl;
+    void preencher(){
+        std::cout<<"Digite a marca do veículo: "<<std::endl;
+    std::cin>>marca;
+
+    std::cout<<"Digite o modelo do veículo: "<<std::endl;
+    std::cin>>modelo;
+
+    std::cout<<"Digite o ano do veículo: "<<std::endl;
+    std::cin>>ano;
+
+    std::cout<<"Digite o valor do veículo: "<<std::endl;
+    std::cin>>valor;
+    }
+
+    void exibir(){
+        std::cout<<"\nInformações sobre o veículo: "<<std::endl;
+        std::cout<<"Marca: "<<marca<<std::endl;
+        std::cout<<"Modelo: "<<modelo<<std::endl;
+        std::cout<<"Ano: "<<ano<<std::endl;
+        std::cout<<"Valor: R$"<<std::fixed<<std::setprecision(2)<<valor<<std::endl;
         std::cout.imbue(std::locale("pt_BR.UTF-8"));
         std::cout.imbue(std::locale("C"));
+        std::cout<<"\n"<<std::endl;
     }
 };
 
 int main(){
 
-    Produto produto1("Garrafa", 4.69);
-    produto1.informacoes();
-
-    Produto produto2("Mouse", 669.89);
-    produto2.informacoes();
-
+    Carro meuCarro;
+    meuCarro.preencher();
+    meuCarro.exibir();
 
     return 0;
 }
