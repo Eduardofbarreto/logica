@@ -3,39 +3,31 @@
 #include<iomanip>
 #include<locale>
 
-class Carro{
+class Calculo{
     public:
-    std::string nome;
-    std::string marca;
-    int ano;
+    int a, b, soma;
 
-    Carro(std::string n, std::string m,
-        int a) : nome(n), marca(m), ano(a) {}
+    Calculo(int num1, int num2) :
+        a(num1), b(num2), soma(0){}
 
-    void pedirInfo(){
-        std::cout<<"Digite o nome do carro: "<<std::endl;
-        std::cin>>nome;
-        std::cout<<"Digite a marca do carro: "<<std::endl;
-        std::cin>>marca;
-        std::cout<<"Digite o ano do carro: "<<std::endl;
-        std::cin>>ano;
+    void pedirDados(){
+        std::cout<<"Digite um valor para a: "<<std::endl;
+        std::cin>>a;
+        std::cout<<"Diite um valor para b: "<<std::endl;
+        std::cin>>b;
     }
 
-    void exibirInfo(){
-        std::cout<<"Nome: "<<nome<<std::endl;
-        std::cout<<"Marca: "<<marca<<std::endl;
-        std::cout<<"Ano: "<<ano<<std::endl;
+    void resolver(){
+        soma = a + b;
+        std::cout<<"O resultado é: "<<soma<<std::endl;
+        std::cout<<std::endl;
     }
-
 };
 
 int main(){
 
-    std::string cNome, cMarca;
-    int cAno;
-
-    Carro meuObj(cNome, cMarca, cAno);
-    meuObj.pedirInfo();
-    meuObj.exibirInfo();
+    Calculo meuObj(0,0);
+    meuObj.pedirDados();
+    meuObj.resolver();
 
 }
