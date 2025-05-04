@@ -3,55 +3,39 @@
 #include<iomanip>
 #include<locale>
 
-class Veiculo{
+class Carro{
     public:
     std::string nome;
     std::string marca;
     int ano;
 
-    Veiculo(){}
+    Carro(std::string n, std::string m,
+        int a) : nome(n), marca(m), ano(a) {}
 
-    virtual void ColetarInfo(){
-        std::cout<<"Digite o nome do veículo: "<<std::endl;
+    void pedirInfo(){
+        std::cout<<"Digite o nome do carro: "<<std::endl;
         std::cin>>nome;
-        std::cout<<"Digite a marca do veículo: "<<std::endl;
+        std::cout<<"Digite a marca do carro: "<<std::endl;
         std::cin>>marca;
-        std::cout<<"Digite o ano do veículo: "<<std::endl;
+        std::cout<<"Digite o ano do carro: "<<std::endl;
         std::cin>>ano;
     }
 
-    virtual void exibirInfo(){
-        std::cout<<std::endl;
-        std::cout<<"Nome do veículo: "<<nome<<std::endl;
-        std::cout<<"Marca do veículo: "<<marca<<std::endl;
-        std::cout<<"Ano do veículo: "<<ano<<std::endl;
-    }
-};
-
-class Carro : public Veiculo{
-    public:
-    std::string radio;
-
-    Carro(){}
-
-    void ColetarInfo() override{
-        Veiculo::ColetarInfo();
-        std::cout<<"Rádio: "<<std::endl;
-        std::cin>>radio;
-        std::cout<<std::endl;
+    void exibirInfo(){
+        std::cout<<"Nome: "<<nome<<std::endl;
+        std::cout<<"Marca: "<<marca<<std::endl;
+        std::cout<<"Ano: "<<ano<<std::endl;
     }
 
-    void exibirInfo() override{
-        Veiculo::exibirInfo();
-        std::cout<<"Possui rádio? "<<radio<<std::endl;
-    }
 };
 
 int main(){
 
-    Carro meuObj;
-    meuObj.ColetarInfo();
+    std::string cNome, cMarca;
+    int cAno;
+
+    Carro meuObj(cNome, cMarca, cAno);
+    meuObj.pedirInfo();
     meuObj.exibirInfo();
 
-    return 0;
 }
