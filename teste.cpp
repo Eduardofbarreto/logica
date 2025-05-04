@@ -1,33 +1,26 @@
 #include<iostream>
 #include<string>
-#include<iomanip>
-#include<locale>
 
-class Calculo{
+class Pessoa{
     public:
-    int a, b, soma;
+    std::string nome;
+    int idade;
 
-    Calculo(int num1, int num2) :
-        a(num1), b(num2), soma(0){}
+    Pessoa(std::string nomeInicial, int idadeInicial) :
+        nome(nomeInicial), idade(idadeInicial){}
 
-    void pedirDados(){
-        std::cout<<"Digite um valor para a: "<<std::endl;
-        std::cin>>a;
-        std::cout<<"Diite um valor para b: "<<std::endl;
-        std::cin>>b;
-    }
-
-    void resolver(){
-        soma = a + b;
-        std::cout<<"O resultado é: "<<soma<<std::endl;
-        std::cout<<std::endl;
+    void apresentar() const{
+        std::cout<<"Olá, meu nome é "<<nome<<" e tenho "<<idade<<" anos."<<std::endl;
     }
 };
 
 int main(){
 
-    Calculo meuObj(0,0);
-    meuObj.pedirDados();
-    meuObj.resolver();
+    Pessoa pessoa1("Alice", 30);
+    pessoa1.apresentar();
 
+    Pessoa pessoa2("Carlos", 26);
+    pessoa2.apresentar();
+
+    return 0;
 }
