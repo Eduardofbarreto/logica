@@ -1,32 +1,41 @@
 #include <iostream>
 #include <string>
+#include<iomanip>
+#include<locale>
 
-class Indice{
+class Carro{
     public:
-    int num[3] = {1,2,3};
-    int numbers[5] = {10, 20, 30, 40, 50};
-    int numA, numbersA;
+    std::string nome;
+    double valor;
 
-    Indice(){}
+    Carro(std::string n, double v) : nome(n), valor(v){}
 
     void coletarDados(){
-        std::cout<<"Digite um valor para num: "<<std::endl;
-        std::cin>>numA;
-        std::cout<<"Digite um valor para numbers: "<<std::endl;
-        std::cin>>numbersA;
+        std::cout<<"Qual nome do carro: "<<std::endl;
+        std::cin>>nome;
+        std::cout<<"Qual valor do carro: "<<std::endl;
+        std::cin>>valor;
     }
 
     void exibirDados(){
-        std::cout<<num[numA]<<std::endl;
-        std::cout<<numbers[numbersA]<<std::endl;
+        std::cout<<"O nome do carro é: "<<nome<<std::endl;
+        std::cout<<"O valor é de: R$"<<std::fixed<<std::setprecision(3)<<valor<<std::endl;
+        std::cout.imbue(std::locale("pt_BR.UTF-8"));
+        std::cout.imbue(std::locale("C"));
     }
+
 };
 
 int main(){
 
-    Indice meuObj;
+    std::string n;
+    double v;
+
+    Carro meuObj(n, v);
     meuObj.coletarDados();
     meuObj.exibirDados();
 
+
     return 0;
 }
+
