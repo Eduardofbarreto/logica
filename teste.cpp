@@ -1,29 +1,30 @@
 #include <iostream>
 #include <string>
+#include<iomanip>
+#include<locale>
 
-class Numbers{
+class Produtos{
     public:
-    int a;
-    int b;
+    int qtd;
+    double valor, resultado;
 
-    Numbers(int num1, int num2) : a(num1), b(num2){}
+    Produtos(){}
 
     void Calcular(){
-        int resultado = a * b;
-        std::cout<<"O resultado é: "<<resultado<<std::endl;
+        resultado = qtd * valor;
+        std::cout<<"O resultado é: R$"<<resultado<<std::fixed<<std::setprecision(2)<<std::endl;
+        std::cout.imbue(std::locale("pt_BR.UTF-8"));
+        std::cout.imbue(std::locale("C"));
     }
-
 };
 
 int main(){
 
-    int aNum1 = 4;
-    int aNum2 = 2;
+    Produtos meuObj;
+    meuObj.qtd = 6;
+    meuObj.valor = 9.99;
 
-    Numbers meuObj(aNum1, aNum2);
     meuObj.Calcular();
-
 
     return 0;
 }
-    
