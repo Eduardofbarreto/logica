@@ -3,39 +3,35 @@
 #include<iomanip>
 #include<locale>
 
-class Carro{
+class Gasolina{
+    private:
+        double valor = 6.999;
+
     public:
-    std::string nome;
-    double valor;
-
-    Carro(std::string n, double v) : nome(n), valor(v){}
-
-    void coletarDados(){
-        std::cout<<"Qual nome do carro: "<<std::endl;
-        std::cin>>nome;
-        std::cout<<"Qual valor do carro: "<<std::endl;
-        std::cin>>valor;
+        void setValor(double v){
+            valor = v;
+        }
+    
+    double getValor(){
+        return valor;
     }
-
-    void exibirDados(){
-        std::cout<<"O nome do carro é: "<<nome<<std::endl;
-        std::cout<<"O valor é de: R$"<<std::fixed<<std::setprecision(3)<<valor<<std::endl;
-        std::cout.imbue(std::locale("pt_BR.UTF-8"));
-        std::cout.imbue(std::locale("C"));
-    }
-
 };
 
 int main(){
 
-    std::string n;
-    double v;
+    double aumento;
 
-    Carro meuObj(n, v);
-    meuObj.coletarDados();
-    meuObj.exibirDados();
+    std::cout<<"De quanto será o aumento da gasolina: "<<std::endl;
+    std::cin>>aumento;
+
+    Gasolina meuObj;
+    double valorAtual = meuObj.getValor();
+    meuObj.setValor(valorAtual + aumento);
+
+    std::cout<<std::fixed<<std::setprecision(3);
+    std::cout<<"O novo valor da gasolina é de: R$"<<meuObj.getValor()<<std::endl;
+
 
 
     return 0;
 }
-
