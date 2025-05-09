@@ -15,7 +15,10 @@ int main(){
     std::cin>>valor;
 
     std::cout<<"O nome do produto é: "<<nome<<std::endl;
-    std::cout<<"O valor do produto é: R$"<<std::fixed<<std::setprecision(2)<<valor<<std::endl;
+    std::cout<<"O valor do produto é: R$ "<<std::fixed<<std::setprecision(2)<<valor<<std::endl;
+    std::cout.imbue(std::locale("pt_BR.UTF-8"));
+    std::cout.imbue(std::locale("C"));
+
 
     return 0;
 }
