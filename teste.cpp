@@ -1,37 +1,21 @@
-#include <iostream>
-#include <string>
-#include<iomanip>
+#include<iostream>
+#include<string>
 #include<locale>
-
-class Gasolina{
-    private:
-        double valor = 6.999;
-
-    public:
-        void setValor(double v){
-            valor = v;
-        }
-    
-    double getValor(){
-        return valor;
-    }
-};
+#include<iomanip>
 
 int main(){
 
-    double aumento;
+    std::string nome;
+    double valor;
 
-    std::cout<<"De quanto será o aumento da gasolina: "<<std::endl;
-    std::cin>>aumento;
+    std::cout<<"Qual nome do produto? "<<std::endl;
+    std::cin>>nome;
 
-    Gasolina meuObj;
-    double valorAtual = meuObj.getValor();
-    meuObj.setValor(valorAtual + aumento);
+    std::cout<<"Qual valor do produto? "<<std::endl;
+    std::cin>>valor;
 
-    std::cout<<std::fixed<<std::setprecision(3);
-    std::cout<<"O novo valor da gasolina é de: R$"<<meuObj.getValor()<<std::endl;
-
-
+    std::cout<<"O nome do produto é: "<<nome<<std::endl;
+    std::cout<<"O valor do produto é: R$"<<std::fixed<<std::setprecision(2)<<valor<<std::endl;
 
     return 0;
 }
