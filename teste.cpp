@@ -1,34 +1,31 @@
 #include<iostream>
-#include<string>
 
-class Veiculo{
+class MinhaClasse{
     public:
-    std::string marca = "Ford";
-    void barulho(){
-        std::cout<<"Tuu Tuuu"<<std::endl;
-    }
+        void minhaFuncao(){
+            std::cout<<"Algum conteúdo na classe pai."<<std::endl;
+        }
 };
 
-class Carro : public Veiculo{
+class MeuFilho : public MinhaClasse{
     public:
-    std::string modelo = "Mustang";
+        void mensagem(){
+            std::cout<<"Classe filho!"<<std::endl;
+        }
 };
 
-class Carro1 : public Veiculo{
-    public:
-    std::string modelo = "Ranger";
+class MeuNeto : public MeuFilho{
+
 };
 
 int main(){
-
-    Carro meuCarro;
-    Carro1 meuCarro1;
-
-    meuCarro.barulho();
-    std::cout<<meuCarro.marca + " " + meuCarro.modelo<<std::endl;
-
-    meuCarro1.barulho();
-    std::cout<<meuCarro1.marca + " " + meuCarro1.modelo<<std::endl;
+    
+    MeuFilho meuObjeto;
+    meuObjeto.mensagem();
+    meuObjeto.minhaFuncao();
+    
+    MeuNeto meuObj;
+    meuObj.minhaFuncao();
 
     return 0;
 }
