@@ -3,29 +3,26 @@
 class MinhaClasse{
     public:
         void minhaFuncao(){
-            std::cout<<"Algum conteúdo na classe pai."<<std::endl;
+            std::cout<<"Algum conteúdo na classe pai!"<<std::endl;
         }
 };
 
-class MeuFilho : public MinhaClasse{
+class MinhaOutraClasse{
     public:
-        void mensagem(){
-            std::cout<<"Classe filho!"<<std::endl;
+        void minhaOutraFuncao(){
+            std::cout<<"Algum conteúdo em outra classe!"<<std::endl;
         }
 };
 
-class MeuNeto : public MeuFilho{
+class MinhaClasseFilha : public MinhaClasse, public MinhaOutraClasse{
 
 };
 
 int main(){
-    
-    MeuFilho meuObjeto;
-    meuObjeto.mensagem();
-    meuObjeto.minhaFuncao();
-    
-    MeuNeto meuObj;
+
+    MinhaClasseFilha meuObj;
     meuObj.minhaFuncao();
+    meuObj.minhaOutraFuncao();
 
     return 0;
 }
