@@ -1,26 +1,141 @@
-// Arquivo: Main.java
-public class Main {
-    public static void main(String[] args) {
-        // Construindo os nós da árvore
-        No n1 = new No(111, null, null);
-        No n4 = new No(444, null, null);
-        No n3 = new No(333, n1, n4);
-        No n9 = new No(999, null, null);
-        No n5 = new No(555, n3, null);
-        No n8 = new No(888, null, n9);
-        No raiz = new No(888, n5, n8);
+import java.util.Scanner;
 
-        // Criando a árvore binária
-        ArvoreBinaria arvore = new ArvoreBinaria();
-        arvore.setRaiz(raiz);
+abstract class Dados {
+    protected double base, altura, area;
+    protected final double pi = 3.14159;
+    protected double raio;
+    protected double lado;
+    protected double comprimento;
 
-        // Testando contagem da esquerda festiva
-        System.out.println("Contagem de nós da esquerda festiva: " + arvore.contarEsquerdaFestiva());
+    // Método construtor
+    public Dados() {}
 
-        // Imprimindo a árvore com recuos
-        System.out.println("\nImpressão da árvore com recuos:");
-        arvore.imprimir();
+    // Métodos virtuais para coletar dados
+    public void coletarDadosTriangulo() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite a base do triângulo:");
+        base = scanner.nextDouble();
+        System.out.println("Digite a altura do triângulo:");
+        altura = scanner.nextDouble();
+    }
+
+    public void coletarDadosCirculo() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite o raio do círculo:");
+        raio = scanner.nextDouble();
+    }
+
+    public void coletarDadosQuadrado() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite um lado do quadrado:");
+        lado = scanner.nextDouble();
+    }
+
+    public void coletarDadosRetangulo() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite o comprimento do retângulo:");
+        comprimento = scanner.nextDouble();
+        System.out.println("Digite a altura do retângulo:");
+        altura = scanner.nextDouble();
+    }
+
+    // Método para calcular a área
+    public void calcular() {
+        System.out.println("O resultado é: " + area);
+        System.out.println();
     }
 }
 
-   
+// Classe Triângulo
+class Triangulo extends Dados {
+    public Triangulo() {}
+
+    @Override
+    public void calcular() {
+        System.out.println();
+        area = (base * altura) / 2;
+        super.calcular();
+    }
+}
+
+// Classe Círculo
+class Circulo extends Dados {
+    public Circulo() {}
+
+    @Override
+    public void calcular() {
+        System.out.println();
+        area = pi * raio * raio;
+        System.out.println("A área do círculo é de: " + area);
+        System.out.println();
+    }
+}
+
+// Classe Quadrado
+class Quadrado extends Dados {
+    public Quadrado() {}
+
+    @Override
+    public void calcular() {
+        System.out.println();
+        area = lado * lado;
+        System.out.println("A área do quadrado é de: " + area);
+        System.out.println();
+    }
+}
+
+// Classe Retângulo
+class Retangulo extends Dados {
+    public Retangulo() {}
+
+    @Override
+    public void calcular() {
+        System.out.println();
+        area = comprimento * altura;
+        System.out.println("A área do retângulo é de: " + area);
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Escolha a opção que deseja calcular:");
+        System.out.println("1 - Triângulo");
+        System.out.println("2 - Círculo");
+        System.out.println("3 - Quadrado");
+        System.out.println("4 - Retângulo");
+
+        int opcao = scanner.nextInt();
+
+        switch(opcao) {
+            case 1:
+                System.out.println("Vamos trabalhar com triângulo:");
+                Triangulo meuTriangulo = new Triangulo();
+                meuTriangulo.coletarDadosTriangulo();
+                meuTriangulo.calcular();
+                break;
+            case 2:
+                System.out.println("Vamos trabalhar com círculo:");
+                Circulo meuCirculo = new Circulo();
+                meuCirculo.coletarDadosCirculo();
+                meuCirculo.calcular();
+                break;
+            case 3:
+                System.out.println("Vamos trabalhar com quadrado:");
+                Quadrado meuQuadrado = new Quadrado();
+                meuQuadrado.coletarDadosQuadrado();
+                meuQuadrado.calcular();
+                break;
+            case 4:
+                System.out.println("Vamos trabalhar com retângulo:");
+                Retangulo meuRetangulo = new Retangulo();
+                meuRetangulo.coletarDadosRetangulo();
+                meuRetangulo.calcular();
+                break;
+            default:
+                System.out.println("Opção inválida!!");
+        }
+    }
+}
