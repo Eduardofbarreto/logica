@@ -1,245 +1,109 @@
-import psycopg2
+import math
 
-class Cliente:
-    def __init__(self, id, nome, email="", telefone=""):
-        self.id = id
-        self.nome = nome
-        self.email = email
-        self.telefone = telefone
+class Dados:
+    def __init__(self):
+        self.base = 0
+        self.altura = 0
+        self.area = 0
+        self.pi = 3.14159
+        self.raio = 0
+        self.lado = 0
+        self.comprimento = 0
 
-    def exibir(self):
-        print(f"ID: {self.id}")
-        print(f"Nome: {self.nome}")
-        print(f"Email: {self.email}")
-        print(f"Telefone: {self.telefone}")
+    # Método para coletar dados do triângulo
+    def coletar_dados_triangulo(self):
+        self.base = float(input("Digite a base do triângulo: "))
+        self.altura = float(input("Digite a altura do triângulo: "))
 
-class Contato:
-    def __init__(self, id, cliente_id, nome, email="", telefone="", cargo=""):
-        self.id = id
-        self.cliente_id = cliente_id
-        self.nome = nome
-        self.email = email
-        self.telefone = telefone
-        self.cargo = cargo
+    # Método para coletar dados do círculo
+    def coletar_dados_circulo(self):
+        self.raio = float(input("Digite o raio do círculo: "))
 
-    def exibir(self):
-        print(f"ID: {self.id}")
-        print(f"Cliente ID: {self.cliente_id}")
-        print(f"Nome: {self.nome}")
-        print(f"Email: {self.email}")
-        print(f"Telefone: {self.telefone}")
-        print(f"Cargo: {self.cargo}")
+    # Método para coletar dados do quadrado
+    def coletar_dados_quadrado(self):
+        self.lado = float(input("Digite um lado do quadrado: "))
 
-class Oportunidade:
-    def __init__(self, id, cliente_id, nome, descricao="", valor=0.0, stage="Prospect"):
-        self.id = id
-        self.cliente_id = cliente_id
-        self.nome = nome
-        self.descricao = descricao
-        self.valor = valor
-        self.stage = stage
+    # Método para coletar dados do retângulo
+    def coletar_dados_retangulo(self):
+        self.comprimento = float(input("Digite o comprimento do retângulo: "))
+        self.altura = float(input("Digite a altura do retângulo: "))
 
-    def exibir(self):
-        print(f"ID: {self.id}")
-        print(f"Cliente ID: {self.cliente_id}")
-        print(f"Nome: {self.nome}")
-        print(f"Descrição: {self.descricao}")
-        print(f"Valor: {self.valor}")
-        print(f"Stage: {self.stage}")
+    # Método para calcular a área
+    def calcular(self):
+        print("O resultado é:", self.area)
+        print()
 
-class GerenciadorClientes:
-    def __init__(self, db_params):
-        self.db_params = db_params
-        self.clientes = self._carregar_clientes_do_banco()
+# Classe Triângulo
+class Triangulo(Dados):
+    def __init__(self):
+        super().__init__()
 
-    def _conectar(self):
-        return psycopg2.connect(**self.db_params)
+    def calcular(self):
+        self.area = (self.base * self.altura) / 2
+        super().calcular()
 
-    def _carregar_clientes_do_banco(self):
-        clientes = []
-        try:
-            with self._conectar() as conn:
-                with conn.cursor() as cur:
-                    cur.execute("SELECT id, nome, email, telefone FROM crm ORDER BY nome;")
-                    for row in cur.fetchall():
-                        clientes.append(Cliente(row[0], row[1], row[2], row[3]))
-        except psycopg2.Error as e:
-            print(f"Erro ao carregar clientes do banco de dados: {e}")
-        return clientes
+# Classe Círculo
+class Circulo(Dados):
+    def __init__(self):
+        super().__init__()
 
-    def adicionar_cliente(self, nome, email="", telefone=""):
-        try:
-            with self._conectar() as conn:
-                with conn.cursor() as cur:
-                    cur.execute(
-                        "INSERT INTO crm (nome, email, telefone) VALUES (%s, %s, %s) RETURNING id;",
-                        (nome, email, telefone),
-                    )
-                    novo_id = cur.fetchone()[0]
-                    conn.commit()
-                    novo_cliente = Cliente(novo_id, nome, email, telefone)
-                    self.clientes.append(novo_cliente)
-                    print(f"Cliente adicionado com ID: {novo_id}")
-                    return novo_cliente
-        except psycopg2.Error as e:
-            conn.rollback()
-            print(f"Erro ao adicionar cliente: {e}")
-            return None
+    def calcular(self):
+        self.area = self.pi * self.raio * self.raio
+        print("A área do círculo é de:", self.area)
+        print()
 
-    def buscar_cliente(self, id):
-        for cliente in self.clientes:
-            if cliente.id == id:
-                return cliente
-        return None
+# Classe Quadrado
+class Quadrado(Dados):
+    def __init__(self):
+        super().__init__()
 
-    def listar_clientes(self):
-        if not self.clientes:
-            print("Nenhum cliente cadastrado.")
-            return
-        print("Lista de Clientes:")
-        for cliente in self.clientes:
-            cliente.exibir()
-            print("-" * 10)
+    def calcular(self):
+        self.area = self.lado * self.lado
+        print("A área do quadrado é de:", self.area)
+        print()
 
-class GerenciadorContatos:
-    def __init__(self, db_params):
-        self.db_params = db_params
+# Classe Retângulo
+class Retangulo(Dados):
+    def __init__(self):
+        super().__init__()
 
-    def _conectar(self):
-        return psycopg2.connect(**self.db_params)
+    def calcular(self):
+        self.area = self.comprimento * self.altura
+        print("A área do retângulo é de:", self.area)
+        print()
 
-    def adicionar_contato(self, cliente_id, nome, email="", telefone="", cargo=""):
-        try:
-            with self._conectar() as conn:
-                with conn.cursor() as cur:
-                    cur.execute(
-                        "INSERT INTO contacts (crm_id, nome, email, telefone, cargo) VALUES (%s, %s, %s, %s, %s) RETURNING id;",
-                        (cliente_id, nome, email, telefone, cargo),
-                    )
-                    novo_id = cur.fetchone()[0]
-                    conn.commit()
-                    print(f"Contato adicionado com ID: {novo_id}")
-                    return Contato(novo_id, cliente_id, nome, email, telefone, cargo)
-        except psycopg2.Error as e:
-            conn.rollback()
-            print(f"Erro ao adicionar contato: {e}")
-            return None
+# Função principal
+def main():
+    print("Escolha a opção que deseja calcular:")
+    print("1 - Triângulo")
+    print("2 - Círculo")
+    print("3 - Quadrado")
+    print("4 - Retângulo")
 
-    def buscar_contatos_por_cliente(self, cliente_id):
-        contatos = []
-        try:
-            with self._conectar() as conn:
-                with conn.cursor() as cur:
-                    cur.execute(
-                        "SELECT id, nome, email, telefone, cargo FROM contacts WHERE crm_id = %s ORDER BY nome;",
-                        (cliente_id,),
-                    )
-                    for row in cur.fetchall():
-                        contatos.append(Contato(row[0], cliente_id, row[1], row[2], row[3], row[4]))
-        except psycopg2.Error as e:
-            print(f"Erro ao buscar contatos: {e}")
-        return contatos
+    opcao = int(input())
 
-    def buscar_contato(self, id):
-        try:
-            with self._conectar() as conn:
-                with conn.cursor() as cur:
-                    cur.execute("SELECT id, crm_id, nome, email, telefone, cargo FROM contacts WHERE id = %s;", (id,))
-                    row = cur.fetchone()
-                    if row:
-                        return Contato(row[0], row[1], row[2], row[3], row[4], row[5])
-                    return None
-        except psycopg2.Error as e:
-            print(f"Erro ao buscar contato: {e}")
-            return None
-
-class GerenciadorOportunidades:
-    def __init__(self, db_params):
-        self.db_params = db_params
-
-    def _conectar(self):
-        return psycopg2.connect(**self.db_params)
-
-    def adicionar_oportunidade(self, cliente_id, nome, descricao="", valor=0.0, stage="Prospect"):
-        try:
-            with self._conectar() as conn:
-                with conn.cursor() as cur:
-                    cur.execute(
-                        "INSERT INTO opportunities (crm_id, nome, descricao, valor, stage) VALUES (%s, %s, %s, %s, %s) RETURNING id;",
-                        (cliente_id, nome, descricao, valor, stage),
-                    )
-                    novo_id = cur.fetchone()[0]
-                    conn.commit()
-                    print(f"Oportunidade adicionada com ID: {novo_id}")
-                    return Oportunidade(novo_id, cliente_id, nome, descricao, valor, stage)
-        except psycopg2.Error as e:
-            conn.rollback()
-            print(f"Erro ao adicionar oportunidade: {e}")
-            return None
-
-    def buscar_oportunidades_por_cliente(self, cliente_id):
-        oportunidades = []
-        try:
-            with self._conectar() as conn:
-                with conn.cursor() as cur:
-                    cur.execute(
-                        "SELECT id, nome, descricao, valor, stage FROM opportunities WHERE crm_id = %s ORDER BY nome;",
-                        (cliente_id,),
-                    )
-                    for row in cur.fetchall():
-                        oportunidades.append(Oportunidade(row[0], cliente_id, row[1], row[2], float(row[3]), row[4]))
-        except psycopg2.Error as e:
-            print(f"Erro ao buscar oportunidades: {e}")
-        return oportunidades
-
-    def buscar_oportunidade(self, id):
-        try:
-            with self._conectar() as conn:
-                with conn.cursor() as cur:
-                    cur.execute("SELECT id, crm_id, nome, descricao, valor, stage FROM opportunities WHERE id = %s;", (id,))
-                    row = cur.fetchone()
-                    if row:
-                        return Oportunidade(row[0], row[1], row[2], row[3], float(row[4]), row[5])
-                    return None
-        except psycopg2.Error as e:
-            print(f"Erro ao buscar oportunidade: {e}")
-            return None
+    if opcao == 1:
+        print("Vamos trabalhar com triângulo:")
+        meu_triangulo = Triangulo()
+        meu_triangulo.coletar_dados_triangulo()
+        meu_triangulo.calcular()
+    elif opcao == 2:
+        print("Vamos trabalhar com círculo:")
+        meu_circulo = Circulo()
+        meu_circulo.coletar_dados_circulo()
+        meu_circulo.calcular()
+    elif opcao == 3:
+        print("Vamos trabalhar com quadrado:")
+        meu_quadrado = Quadrado()
+        meu_quadrado.coletar_dados_quadrado()
+        meu_quadrado.calcular()
+    elif opcao == 4:
+        print("Vamos trabalhar com retângulo:")
+        meu_retangulo = Retangulo()
+        meu_retangulo.coletar_dados_retangulo()
+        meu_retangulo.calcular()
+    else:
+        print("Opção inválida!!")
 
 if __name__ == "__main__":
-    db_params = {
-        'host': 'edu_barreto',
-        'database': 'seu_banco_de_dados',  # Substitua pelo seu banco de dados
-        'user': 'postgres',
-        'password': 'root'
-    }
-
-    gerenciador_clientes = GerenciadorClientes(db_params)
-    gerenciador_contatos = GerenciadorContatos(db_params)
-    gerenciador_oportunidades = GerenciadorOportunidades(db_params)
-
-    # Adicionar um novo cliente
-    novo_cliente = gerenciador_clientes.adicionar_cliente("Empresa Python Banco", "python.banco@email.com", "11 5555-5555")
-
-    if novo_cliente:
-        # Listar todos os clientes
-        gerenciador_clientes.listar_clientes()
-
-        # Adicionar um contato ao cliente recém-adicionado
-        gerenciador_contatos.adicionar_contato(novo_cliente.id, "Maria Souza", "maria.souza@empresa.com", "11 6666-6666", "Analista de Vendas")
-
-        # Adicionar uma oportunidade ao cliente recém-adicionado
-        gerenciador_oportunidades.adicionar_oportunidade(novo_cliente.id, "Projeto Python CRM", "Desenvolvimento do CRM em Python", 10000.00, "Proposta")
-
-        # Buscar contatos do cliente
-        contatos_cliente = gerenciador_contatos.buscar_contatos_por_cliente(novo_cliente.id)
-        print(f"\nContatos do cliente {novo_cliente.nome}:")
-        for contato in contatos_cliente:
-            contato.exibir()
-            print("-" * 10)
-
-        # Buscar oportunidades do cliente
-        oportunidades_cliente = gerenciador_oportunidades.buscar_oportunidades_por_cliente(novo_cliente.id)
-        print(f"\nOportunidades do cliente {novo_cliente.nome}:")
-        for oportunidade in oportunidades_cliente:
-            oportunidade.exibir()
-            print("-" * 10)
+    main()
