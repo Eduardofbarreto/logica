@@ -1,143 +1,82 @@
 #include<iostream>
 #include<string>
+#include<iomanip>
+#include<locale>
 
-class Dados{
+class Cadastro{
     public:
-        double base, altura, area;
-        const double pi = 3.14159;
-        double raio;
-        double lado;
-        double comprimento;
+        std::string nome;
+        std::string senha;
+        // std::string nascimento;
 
-    Dados(){}
+    Cadastro(){}
 
-    virtual void coletarDadosTriangulo(){
-        std::cout<<"Digite a base do triângulo: "<<std::endl;
-        std::cin>>base;
-        std::cout<<"Digite a altura do triângulo: "<<std::endl;
-        std::cin>>altura;
+    virtual void logar(){
+        std::cout<<"Digite seu nome: "<<std::endl;
+        std::cin>>nome;
+        std::cout<<"Digite sua senha: "<<std::endl;
+        std::cin>>senha;
     }
 
-    virtual void coletarDadosCirculo(){
-        std::cout<<"Digite o raio do círculo: "<<std::endl;
-        std::cin>>raio;
+    virtual void boasVindas(){
+        std::cout<<"Cadastro realizado com sucesso!"<<std::endl;
+        std::cout<<"Seja bem-vindo "<<nome<<std::endl;
     }
 
-    virtual void coletarDadosQuadrado(){
-        std::cout<<"Digite um lado do quadrado: "<<std::endl;
-        std::cin>>lado;
+    virtual void login(){
+        std::cout<<"Que bom que você voltou "<<nome<<"!"<<std::endl;
     }
 
-    virtual void coletarDadosRetangulo(){
-        std::cout<<"Digite o comprimento do retângulo: "<<std::endl;
-        std::cin>>comprimento;
-        std::cout<<"Digite a altura do retângulo: "<<std::endl;
-        std::cin>>altura;
-    }
+};
+
+class Vender : public Cadastro{
+    public:
+        std::string produto;
+        double valor;
+        int quantidade;
+        double total;
+
+    Vender(){}
 
     virtual void calcular(){
-        std::cout<<"O resultado é: "<<area<<std::endl;
-        std::cout<<std::endl;
-    }
-};
-
-class Triangulo : public Dados{
-    public:
-
-    Triangulo(){}
-
-    void calcular() override{
-        std::cout<<std::endl;
-        area = (base * altura)/2;
-        Dados::calcular();
+        if(quantidade >=2){
+            total = quantidade * valor;
+            std::cout<<"O valor foi de: R$ "<<std::fixed<<
+                std::setprecision(2)<<total<<std::endl;
+        }else{
+            total = valor;
+            std::cout<<"O valor foi de: R$ "<<std::fixed<<
+                std::setprecision(2)<<total<<std::endl;
+        };
     }
 
-};
-
-class Circulo : public Dados{
-    public:
-
-    Circulo(){}
-
-    void calcular() override{
-        std::cout<<std::endl;
-        area = pi * raio * raio;
-        std::cout<<"A área do círculo é de: "<<area<<std::endl;
-        std::cout<<std::endl;
+    virtual void concluir(){
+        std::cout<<"Parabéns "<<nome<<"!"<<std::endl;
+        std::cout<<"Seu(ua) "<<produto<<" foi vendido com sucesso!"<<std::endl;
+        calcular();
     }
-};
 
-class Quadrado : public Dados{
-    public:
-
-    Quadrado(){}
-
-    void calcular() override{
-        std::cout<<std::endl;
-        area = lado * lado;
-        std::cout<<"A área do quadrado é de: "<<area<<std::endl;
-        std::cout<<std::endl;
-    }
-};
-
-class Retangulo : public Dados{
-    public:
-
-    Retangulo(){}
-
-    void calcular() override{
-        std::cout<<std::endl;
-        area = comprimento * altura;
-        std::cout<<"A área do retângulo é de: "<<area<<std::endl;
-        std::cout<<std::endl;
-    }
 };
 
 int main(){
 
-    int opcao;
+    int opcaoEntrada;
 
-    std::cout<<"Escolha a opção que deseja calcular: "<<std::endl;
-    std::cout<<"1 - Triângulo "<<std::endl;
-    std::cout<<"2 - Círculo "<<std::endl;
-    std::cout<<"3 - Quadrado "<<std::endl;
-    std::cout<<"4 - Retângulo "<<std::endl;
+    Vender minhaVenda;
 
-    std::cin>>opcao;
+    std::cout<<"Você já é cliente? "<<std::endl;
+    std::cout<<"1 - SIM"<<std::endl;
+    std::cout<<"2 - NÃO"<<std::endl;
+    std::cin>>opcaoEntrada;
 
-    switch(opcao){
-        case 1:{
-            std::cout<<"Vamos trabalhar com triângulo: "<<std::endl;
-            Triangulo meuTriangulo;
-            meuTriangulo.coletarDadosTriangulo();
-            meuTriangulo.calcular();
-            break;
-        }
-        case 2:{
-            std::cout<<"Vamos trabalhar com círculo: "<<std::endl;
-            Circulo meuCirculo;
-            meuCirculo.coletarDadosCirculo();
-            meuCirculo.calcular();
-            break;
-        }   
-        case 3:{
-            std::cout<<"Vamos trabalhar com quadrado: "<<std::endl;
-            Quadrado meuQuadrado;
-            meuQuadrado.coletarDadosQuadrado();
-            meuQuadrado.calcular();
-            break;
-        }    
-        case 4:{
-            std::cout<<"Vamos trabalhar com retângulo: "<<std::endl;
-            Retangulo meuRetangulo;
-            meuRetangulo.coletarDadosRetangulo();
-            meuRetangulo.calcular();
-            break;
-        }    
-        default:
-            std::cout<<"Opção inválida!!";
-           
+    if(opcaoEntrada == 1){
+        minhaVenda.logar();
+        minhaVenda.login();
+    }else{
+        minhaVenda.logar();
+        minhaVenda.boasVindas();
     }
+
 
     return 0;
 }
