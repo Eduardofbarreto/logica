@@ -16,15 +16,18 @@ class Cadastro{
         std::cin>>nome;
         std::cout<<"Digite sua senha: "<<std::endl;
         std::cin>>senha;
+        std::cout<<std::endl;
     }
 
     virtual void boasVindas(){
         std::cout<<"Cadastro realizado com sucesso!"<<std::endl;
         std::cout<<"Seja bem-vindo "<<nome<<std::endl;
+        std::cout<<std::endl;
     }
 
     virtual void login(){
         std::cout<<"Que bom que você voltou "<<nome<<"!"<<std::endl;
+        std::cout<<std::endl;
     }
 
 };
@@ -37,6 +40,15 @@ class Vender : public Cadastro{
         double total;
 
     Vender(){}
+
+    virtual void mercadoria(){
+        std::cout<<"Nome do produto: "<<std::endl;
+        std::cin>>produto;
+        std::cout<<"Valor do produto: "<<std::endl;
+        std::cin>>valor;
+        std::cout<<"Quantidade do produto: "<<std::endl;
+        std::cin>>quantidade;
+    }
 
     virtual void calcular(){
         if(quantidade >=2){
@@ -54,6 +66,7 @@ class Vender : public Cadastro{
         std::cout<<"Parabéns "<<nome<<"!"<<std::endl;
         std::cout<<"Seu(ua) "<<produto<<" foi vendido com sucesso!"<<std::endl;
         calcular();
+        std::cout<<std::endl;
     }
 
 };
@@ -77,6 +90,9 @@ int main(){
         minhaVenda.boasVindas();
     }
 
-
+    minhaVenda.mercadoria();
+    minhaVenda.calcular();
+    minhaVenda.concluir();
+ 
     return 0;
 }
