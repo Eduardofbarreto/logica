@@ -1,98 +1,75 @@
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
 #include<iomanip>
 #include<locale>
 
-class Cadastro{
+class Imovel{
     public:
-        std::string nome;
-        std::string senha;
-        // std::string nascimento;
+        double largura;
+        double comprimento;
+        double area;
+        const double vMetro = 16000;
+        double valorImovel;
+    
+    Imovel(){}
 
-    Cadastro(){}
-
-    virtual void logar(){
-        std::cout<<"Digite seu nome: "<<std::endl;
-        std::cin>>nome;
-        std::cout<<"Digite sua senha: "<<std::endl;
-        std::cin>>senha;
+    virtual void calcValor(){
+        valorImovel = vMetro * area;
+        std::cout<<"O valor do imóvel é de: R$ "<<
+            std::fixed<<std::setprecision(2)<<valorImovel<<std::endl;
+        std::cout.imbue(std::locale("pt_BR.UTF-8"));
+        std::cout.imbue(std::locale("C"));
         std::cout<<std::endl;
     }
 
-    virtual void boasVindas(){
-        std::cout<<"Cadastro realizado com sucesso!"<<std::endl;
-        std::cout<<"Seja bem-vindo "<<nome<<std::endl;
+    virtual void coleta(){
+        std::cout<<"Qual a largura do imóvel: "<<std::endl;
+        std::cin>>largura;
+        std::cout<<"Qual o comprimento do imóvel: "<<std::endl;
+        std::cin>>comprimento;
         std::cout<<std::endl;
     }
 
-    virtual void login(){
-        std::cout<<"Que bom que você voltou "<<nome<<"!"<<std::endl;
-        std::cout<<std::endl;
+    virtual void calculo(){
+        area = largura * comprimento;
     }
 
+    virtual void informacoes(){
+        std::cout<<"O imóvel tem "<<largura<<"metros de largura."<<std::endl;
+        std::cout<<"O imóvel tem "<<comprimento<<"metros de comprimento."<<std::endl;
+        std::cout<<"O imóvel possui "<<area<<" metros quadrados."<<std::endl;
+        std::cout<<std::endl;
+    }
 };
 
-class Vender : public Cadastro{
+class Casa : public Imovel{
     public:
-        std::string produto;
-        double valor;
-        int quantidade;
-        double total;
+    int quartos;
+    int banheiros;
 
-    Vender(){}
+    Casa(){}
 
-    virtual void mercadoria(){
-        std::cout<<"Nome do produto: "<<std::endl;
-        std::cin>>produto;
-        std::cout<<"Valor do produto: "<<std::endl;
-        std::cin>>valor;
-        std::cout<<"Quantidade do produto: "<<std::endl;
-        std::cin>>quantidade;
+    void coleta() override{
+        Imovel::coleta();
+        std::cout<<"Quantos quartos possui o imóvel: "<<std::endl;
+        std::cin>>quartos;
+        std::cout<<"Quantos banheiros possui o imóvel: "<<std::endl;
+        std::cin>>banheiros;
     }
 
-    virtual void calcular(){
-        if(quantidade >=2){
-            total = quantidade * valor;
-            std::cout<<"O valor foi de: R$ "<<std::fixed<<
-                std::setprecision(2)<<total<<std::endl;
-        }else{
-            total = valor;
-            std::cout<<"O valor foi de: R$ "<<std::fixed<<
-                std::setprecision(2)<<total<<std::endl;
-        };
+    void informacoes() override{
+        Imovel::informacoes();
+        std::cout<<"O imóvel possui "<<quartos<<" quarto(s)."<<std::endl;
+        std::cout<<"O imóvel possui "<<banheiros<<" banheiro(s)."<<std::endl;
+        Imovel::calcValor();
     }
-
-    virtual void concluir(){
-        std::cout<<"Parabéns "<<nome<<"!"<<std::endl;
-        std::cout<<"Seu(ua) "<<produto<<" foi vendido com sucesso!"<<std::endl;
-        calcular();
-        std::cout<<std::endl;
-    }
-
 };
 
 int main(){
 
-    int opcaoEntrada;
+    Casa minhaCasa;
+    minhaCasa.coleta();
+    minhaCasa.informacoes();
 
-    Vender minhaVenda;
-
-    std::cout<<"Você já é cliente? "<<std::endl;
-    std::cout<<"1 - SIM"<<std::endl;
-    std::cout<<"2 - NÃO"<<std::endl;
-    std::cin>>opcaoEntrada;
-
-    if(opcaoEntrada == 1){
-        minhaVenda.logar();
-        minhaVenda.login();
-    }else{
-        minhaVenda.logar();
-        minhaVenda.boasVindas();
-    }
-
-    minhaVenda.mercadoria();
-    minhaVenda.calcular();
-    minhaVenda.concluir();
- 
     return 0;
 }
