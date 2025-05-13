@@ -1,64 +1,61 @@
 #include<iostream>
 #include<string>
-#include<iomanip>
-#include<locale>
 
-class PessoaFisica{
+class Dados{
     public:
-        std::string nome;
-        std::string cpf;
-        std::string nasc;
+        double base, altura, area;
+        const double pi = 3.14159;
+        double raio;
 
-    PessoaFisica(){}
+    Dados(){}
 
-    virtual void coletarInfo(){
-        std::cout<<"Qual nome: "<<std::endl;
-        std::cin>>nome;
-        std::cout<<"Qual cpf: "<<std::endl;
-        std::cin>>cpf;
-        std::cout<<"Qual data de nascimento: "<<std::endl;
-        std::cin>>nasc;
+    virtual void coletarDadosTriangulo(){
+        std::cout<<"Digite a base: "<<std::endl;
+        std::cin>>base;
+        std::cout<<"Digite a altura: "<<std::endl;
+        std::cin>>altura;
     }
 
-    virtual void exibirInfo(){
-        std::cout<<"O nome é: "<<nome<<"."<<std::endl;
-        std::cout<<"O cpf é: "<<cpf<<"."<<std::endl;
-        std::cout<<"A data de nascimento é: "<<nasc<<"."<<std::endl;
+    virtual void coletarDadosCirculo(){
+        std::cout<<"Digite o raio do círculo: "<<std::endl;
+        std::cin>>raio;
+    }
+
+    virtual void calcular(){
+        std::cout<<"O resultado é: "<<area<<std::endl;
+        std::cout<<std::endl;
     }
 };
 
-class Empregrado : public PessoaFisica{
+class Triangulo : public Dados{
     public:
-        std::string cargo;
-        double salario;
-        int matricula;
 
-    void coletarInfo() override{
-        PessoaFisica::coletarInfo();
-        std::cout<<"Qual o cargo: "<<std::endl;
-        std::cin>>cargo;
-        std::cout<<"Qual o salário: "<<std::endl;
-        std::cin>>salario;
-        std::cout<<"Qual a matrícula: "<<std::endl;
-        std::cin>>matricula;
+    Triangulo(){}
+
+    void calcular() override{
+        area = (base * altura)/2;
+        Dados::calcular();
     }
 
-    void exibirInfo() override{
-        PessoaFisica::exibirInfo();
-        std::cout<<"O cargo é: "<<cargo<<"."<<std::endl;
-        std::cout<<"O salário é de: R$ "<<std::fixed<<std::setprecision(2)<<salario<<"."<<std::endl;
-        std::cout.imbue(std::locale("pt.BR-UTF8"));
-        std::cout.imbue(std::locale("C"));
-        std::cout<<"A matrícula é: "<<matricula<<std::endl;
+};
+
+class Circulo : public Dados{
+    public:
+
+    Circulo(){}
+
+    void calcular() override{
+        area = pi * raio * raio;
+        std::cout<<"A área do círculo é de: "<<area<<std::endl;
     }
-    
 };
 
 int main(){
 
-    Empregrado meuObj;
-    meuObj.coletarInfo();
-    meuObj.exibirInfo();
+    Circulo meuCirculo;
+    meuCirculo.coletarDadosCirculo();
+    meuCirculo.calcular();
+    
 
     return 0;
 }
