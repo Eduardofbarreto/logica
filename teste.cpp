@@ -13,12 +13,14 @@ class Imovel{
     
     Imovel(){}
 
+    void calculo(){
+        area = largura * comprimento;
+    }
+
     virtual void calcValor(){
         valorImovel = vMetro * area;
         std::cout<<"O valor do imóvel é de: R$ "<<
             std::fixed<<std::setprecision(2)<<valorImovel<<std::endl;
-        std::cout.imbue(std::locale("pt_BR.UTF-8"));
-        std::cout.imbue(std::locale("C"));
         std::cout<<std::endl;
     }
 
@@ -28,10 +30,6 @@ class Imovel{
         std::cout<<"Qual o comprimento do imóvel: "<<std::endl;
         std::cin>>comprimento;
         std::cout<<std::endl;
-    }
-
-    virtual void calculo(){
-        area = largura * comprimento;
     }
 
     virtual void informacoes(){
