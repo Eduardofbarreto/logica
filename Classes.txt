@@ -1,0 +1,51 @@
+A estrutura de classes em C++ quando não estão no mesmo arquivo.
+
+arquivo.h
+
+#ifndef NOME_ARQUIVO_H
+#define "            "
+
+class Nome{
+    public:
+    variáveis
+
+    Construtor();
+
+    nomes das funções
+
+    void .....();
+    void .....();
+
+
+};
+
+#endif
+
+arquivo.cpp
+
+#include "Arquivo.h"
+#include<iostream>
+
+Nome_classe::Nome_classe(){}
+
+void ... (){
+    código//
+}
+
+void ...(){
+    código//
+}
+
+main.cpp
+
+#include<iostream>
+#include"Arquivo.h"
+
+int main(){
+
+    Classe C;
+    C.....();
+    C.....();
+
+    return 0;
+}
