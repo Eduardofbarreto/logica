@@ -1,13 +1,17 @@
-nome = "Eduardo"
-sobrenome = input("Digite o sobrenome: ")
+a = "Eduardo"
+b = "Barreto"
 
-a = int(input("Digite um valor para a: "))
-b = int(input("Digite um valor para b: "))
-c = float(input("Digite um valor para c: "))
+c = a +" "+ b
 
-soma = (a + b)*c
+print(c)
 
+age = 36
+txt = "My name is John, I am "
+print(txt, age)
 
+x = int(input("Digite um valor para x: "))
+y = float(input("Digite um valor para y: "))
 
-print(nome, sobrenome)
-print("O resultado é igual a ", soma)
+z = x * y
+
+print("O resultado é: ", z)
