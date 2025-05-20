@@ -5,15 +5,13 @@
 class Produto{
     public:
     std::string nome;
-    int quantidade;
-    double valor;
-    double total;
+    double preco;
 
-    Produto(){}
+    Produto(){};
 
-    void coletar();
-    void calcular();
-    void exibir();
+    virtual void coletar();
+    virtual void exibir();
+    //virtual ~Produto();
 };
 
-#endif  //!__PRODUTO__H__
+#endif 
