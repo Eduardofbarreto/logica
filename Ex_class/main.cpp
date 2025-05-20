@@ -1,10 +1,10 @@
-#include "Produto.h"
+#include "RacaoCaes.h"
 
 int main(){
 
-    Produto p;
-    p.coletar();
-    p.exibir();
+    RacaoCaes obj;
+    obj.coletar();
+    obj.exibir();
 
     return 0;
 }
