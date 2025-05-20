@@ -5,7 +5,6 @@
 class Produto{
     public:
     std::string nome;
-    double preco;
 
     Produto(){};
 
