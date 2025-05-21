@@ -2,6 +2,7 @@
 #include "Vetor.h"
 #include "Vetor1.h"
 #include "While.h"
+#include "Dowhile.h"
 
 int main(){
 
@@ -14,10 +15,14 @@ int main(){
 
     Looping obj;
     obj.tabuada();
-    */
+    
 
     While w;
     w.fazerLoop();
+    */
+
+    Dowhile d;
+    d.execute();
 
     return 0;
 }
