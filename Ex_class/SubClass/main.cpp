@@ -1,10 +1,12 @@
-#include "Conta.h"
+
+#include "ContaEmpresa.h"
 #include<iostream>
 
 int main(){
 
     int opcao;
-    Conta c;
+    
+    ContaEmpresa c;
 
     std::cout<<"========================"<<std::endl;
     std::cout<<"Bem-vido ao sistema bancário!"<<std::endl;
