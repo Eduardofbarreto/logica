@@ -1,25 +1,18 @@
 #include<iostream>
-#include<string>
-#include<vector>
-#include<limits>
 
 int main(){
 
-    int num_sec = 8;
-    int tentativas;
     int num;
+    int tab[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-    do{
-        std::cout<<"Tente a sorte: "<<std::endl;
-        std::cout<<"Digite um número entre 1 a 100: "<<std::endl;
-        std::cin>>num;
-    }while(num != num_sec);
-        if(num == num_sec){
-            std::cout<<"Parabéns! Você acertou!"<<num_sec<<"!"<<std::endl;
-        }else{
-            std::cout<<"Continue tentando!"<<std::endl;
-            std::cout<<"Digite um número de 1 a 100: "<<std::endl;
-        }
+    std::cout<<"Digite um número para fazer a tabuada: "<<std::endl;
+    std::cin>>num;
+
+    for(int i = 0; i < 10; i++){
+        num * tab[i];
+        std::cout<<num<<" x "<<tab[i]<<" = "<<num*tab[i]<<std::endl;
+    }
+
 
     return 0;
 }
