@@ -1,84 +1,116 @@
-import psycopg2
+class Conta:
+    def __init__(self, numero, nome):
+        self.__numero = numero
+        self.__nome = nome
+        self.__saldo = 0.0
 
-def inserir_pessoa(conn):
-    nome = input("Nome: ")
-    idade = int(input("Idade: "))
-    
-    with conn.cursor() as cur:
-        cur.execute("INSERT INTO pessoas (nome, idade) VALUES (%s, %s)", (nome, idade))
-        conn.commit()
-        
-    print("Pessoa inserida com sucesso!")
-    
-def listar_pessoas(conn):
-    with conn.cursor() as cur:
-        cur.execute("SELECT id, nome, idade FROM pessoas ORDER BY id")
-        resultados = cur.fetchall()
-        
-        print("\n ----- Lista de pessoas -----")
-        for row in resultados:
-            print(f"ID: {row[0]}, Nome: {row[1]}, Idade: {row[2]}")
-            
-def atualizar_pessoa(conn):
-    id_pessoa = int(input("ID da pessoa para atualizar: "))
-    nome = input("Novo nome: ")
-    idade = int(input("Nova idade: "))
-    
-    with conn.cursor() as cur:
-        cur.execute(
-            "UPDATE pessoas SET nome=%s, idade=%s WHERE id=%s",
-            (nome, idade, id_pessoa)
-        )
-        conn.commit()
-        
-        print("Pessoa atualizada com sucesso!")
-        
-def deletar_pessoa(conn):
-    id_pessoa = int(input("ID da pessoa para deletar: "))
-    
-    with conn.cursor() as cur:
-        cur.execute("DELETE FROM pessoas WHERE id=%s", (id_pessoa))
-        conn.commit()
-        
-    print("Pessoa deletada com sucesso!")
-    
-def main():
+    def get_numero(self):
+        return self.__numero
+
+    def get_nome(self):
+        return self.__nome
+
+    def get_saldo(self):
+        return self.__saldo
+
+    def depositar(self, valor):
+        if valor > 0:
+            self.__saldo += valor
+
+    def sacar(self, valor):
+        if 0 < valor <= self.__saldo:
+            self.__saldo -= valor
+            return True
+        return False
+
+    def mostrar_saldo(self):
+        print(f"Titular: {self.__nome}")
+        print(f"Saldo: R$ {self.__saldo:.2f}")
+
+
+contas = []
+
+def buscar_conta(numero):
+    for conta in contas:
+        if conta.get_numero() == numero:
+            return conta
+    return None
+
+def criar_conta():
     try:
-        conn = psycopg2.connect(
-            dbname="meu_novo_banco_de_dados",
-            user="postgres",
-            password="root",
-            host="localhost"
-        )
-        
-        while True:
-            print("\n ===== Menu CRUD pessoas =====")
-            print("1. Inserir pessoa")
-            print("2. Listar pessoas")
-            print("3. Atualizar pessoa")
-            print("4. Deletar pessoa")
-            print("0. Sair")
-            
-            opcao = input("Escolha uma opção: ")
-            
-            if opcao == '1':
-                inserir_pessoa(conn)
-            elif opcao == '2':
-                listar_pessoas(conn)
-            elif opcao == '3':
-                atualizar_pessoa(conn)
-            elif opcao == '4':
-                deletar_pessoa(conn)
-            elif opcao == '0':
-                print("Saindo...")
-                break
+        numero = int(input("Número da nova conta: "))
+        if buscar_conta(numero):
+            print("Conta já existe!")
+            return
+        nome = input("Nome do titular: ")
+        contas.append(Conta(numero, nome))
+        print("Conta criada com sucesso!")
+    except ValueError:
+        print("Entrada inválida.")
+
+def ver_saldo():
+    try:
+        numero = int(input("Número da conta: "))
+        conta = buscar_conta(numero)
+        if conta:
+            conta.mostrar_saldo()
+        else:
+            print("Conta não encontrada.")
+    except ValueError:
+        print("Número inválido.")
+
+def depositar_valor():
+    try:
+        numero = int(input("Número da conta: "))
+        conta = buscar_conta(numero)
+        if conta:
+            valor = float(input("Valor para depositar: R$ "))
+            conta.depositar(valor)
+            print("Depósito realizado.")
+        else:
+            print("Conta não encontrada.")
+    except ValueError:
+        print("Entrada inválida.")
+
+def sacar_valor():
+    try:
+        numero = int(input("Número da conta: "))
+        conta = buscar_conta(numero)
+        if conta:
+            valor = float(input("Valor para sacar: R$ "))
+            if conta.sacar(valor):
+                print("Saque realizado.")
             else:
-                print("Opção inválida!")
-                
-        conn.close()
-        
-    except Exception as e:
-        print("Erro: ", e)
-        
+                print("Saldo insuficiente ou valor inválido.")
+        else:
+            print("Conta não encontrada.")
+    except ValueError:
+        print("Entrada inválida.")
+
+def menu():
+    while True:
+        print("\n--- Menu Bancário ---")
+        print("1. Criar conta")
+        print("2. Ver saldo")
+        print("3. Depositar")
+        print("4. Sacar")
+        print("0. Sair")
+
+        escolha = input("Escolha: ")
+
+        if escolha == "1":
+            criar_conta()
+        elif escolha == "2":
+            ver_saldo()
+        elif escolha == "3":
+            depositar_valor()
+        elif escolha == "4":
+            sacar_valor()
+        elif escolha == "0":
+            print("Saindo...")
+            break
+        else:
+            print("Opção inválida.")
+
 if __name__ == "__main__":
-    main()
+    menu()
