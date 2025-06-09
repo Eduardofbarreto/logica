@@ -1,5 +1,5 @@
 lista = ["casa", "comida", "cachorros", "carro", "paisagem", "computador", "televisão"]
 
-lista[1] = "vida"
+lista.append("azul")
 
-print(lista[1])
+print(lista)
