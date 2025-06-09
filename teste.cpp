@@ -1,105 +1,140 @@
-#include<iostream>
-#include<pqxx/pqxx>
+#include <iostream>
+#include <vector>
+#include <string>
 
-void inserirPessoa(pqxx::connection &conn){
+class Conta {
+private:
+    int numero;
     std::string nome;
-    int idade;
+    double saldo;
 
-    std::cout<<"Nome: "<<std::endl;
-    std::cin.ignore();
-    std::getline(std::cin, nome);
-    std::cout<<"Idade: "<<std::endl;
-    std::cin>>idade;
+public:
+    Conta(int num, const std::string& nomeTitular)
+        : numero(num), nome(nomeTitular), saldo(0.0) {}
 
-    pqxx::work txn(conn);
-    txn.exec_params("INSERT INTO pessoas (nome, idade) VALUES ($1, $2)", nome, idade);
-    txn.commit();
+    int getNumero() const { return numero; }
+    std::string getNome() const { return nome; }
+    double getSaldo() const { return saldo; }
 
-    std::cout<<"Pessoa inserida com sucesso!"<<std::endl;
-
-}
-
-void listarPessoa(pqxx::connection &conn){
-    pqxx::nontransaction txn(conn);
-    pqxx::result r = txn.exec("SELECT id, nome, idade FROM pessoas ORDER BY id");
-
-    std::cout<<"\n --- Lista de pessoas --- \n";
-    for (const auto &row : r){
-        std::cout<<"ID: "<<row["id"].as<int>()
-                 <<", Nome: "<<row["nome"].as<std::string>()
-                 <<", Idade: "<<row["idade"].as<int>()<<"\n";
+    void depositar(double valor) {
+        if (valor > 0)
+            saldo += valor;
     }
-}
 
-void atualizarPessoa(pqxx::connection &conn){
-    int id;
-    std::string nome;
-    int idade;
-
-    std::cout<<"ID d apessoa para atualizar: "<<std::endl;
-    std::cin>>id;
-    std::cin.ignore();
-
-    std::cout<<"Novo nome: "<<std::endl;
-    std::getline(std::cin, nome);
-    std::cout<<"Nova idade: "<<std::endl;
-    std::cin>>idade;
-
-    pqxx::work txn(conn);
-    txn.exec_params("UPDATE pessoas SET nome=$1, idade=$2 WHERE id=$3", nome, idade, id);
-    txn.commit();
-
-    std::cout<<"Pessoa atualizada com sucesso!"<<std::endl;
-}
-
-void deletarPessoa(pqxx::connection &conn){
-    int id;
-    std::cout<<"ID da pessoa para deletar: "<<std::endl;
-    std::cin>>id;
-
-    pqxx::work txn(conn);
-    txn.exec_params("DELETE FROM pessoas WHERE id=$1", id);
-    txn.commit();
-
-    std::cout<<"Pessoa deletada com sucesso!"<<std::endl;
-}
-
-int main(){
-
-    try{
-        pqxx::connection conn("dbname=meu_novo_banco_de_dados user=postgres password=root host=localhost");
-
-        if(!conn.is_open()){
-            std::cerr<<"Erro ao conectar no banco de dados!"<<std::endl;
-            return 1;
+    bool sacar(double valor) {
+        if (valor > 0 && valor <= saldo) {
+            saldo -= valor;
+            return true;
         }
-
-        int opcao;
-        do{
-            std::cout<<"\n ===== Menu CRUD pessoas ====="<<std::endl;
-            std::cout<<"1. Inserir pessoa"<<std::endl;
-            std::cout<<"2. Listar pessoas"<<std::endl;
-            std::cout<<"3. Atualizar pessoa"<<std::endl;
-            std::cout<<"4. Deletar pessoa"<<std::endl;
-            std::cout<<"0. Sair"<<std::endl;
-            std::cin>>opcao;
-
-            switch(opcao){
-                case 1: inserirPessoa(conn);break;
-                case 2: listarPessoa(conn);break;
-                case 3: atualizarPessoa(conn);break;
-                case 4: deletarPessoa(conn);break;
-                case 0: std::cout<<"Saindo...\n";break;
-                default:std::cout<<"Opção inválida!\n";break;
-            }
-        }while(opcao != 0);
-
-        conn.disconnect();
-    }catch (const std::exception &e){
-        std::cerr<<"Erro "<<e.what()<<std::endl;
-        return 1;
+        return false;
     }
+
+    void mostrarSaldo() const {
+        std::cout << "Titular: " << nome << "\n";
+        std::cout << "Saldo: R$ " << saldo << "\n";
+    }
+};
+
+std::vector<Conta> contas;
+
+Conta* buscarConta(int numero) {
+    for (auto& conta : contas) {
+        if (conta.getNumero() == numero)
+            return &conta;
+    }
+    return nullptr;
+}
+
+void criarConta() {
+    int numero;
+    std::string nome;
+
+    std::cout << "Número da nova conta: ";
+    std::cin >> numero;
+    if (buscarConta(numero)) {
+        std::cout << "Conta já existe!\n";
+        return;
+    }
+
+    std::cin.ignore();
+    std::cout << "Nome do titular: ";
+    std::getline(std::cin, nome);
+
+    contas.emplace_back(numero, nome);
+    std::cout << "Conta criada com sucesso!\n";
+}
+
+void verSaldo() {
+    int numero;
+    std::cout << "Número da conta: ";
+    std::cin >> numero;
+
+    Conta* conta = buscarConta(numero);
+    if (conta) {
+        conta->mostrarSaldo();
+    } else {
+        std::cout << "Conta não encontrada.\n";
+    }
+}
+
+void depositarValor() {
+    int numero;
+    double valor;
+    std::cout << "Número da conta: ";
+    std::cin >> numero;
+
+    Conta* conta = buscarConta(numero);
+    if (conta) {
+        std::cout << "Valor para depositar: R$ ";
+        std::cin >> valor;
+        conta->depositar(valor);
+        std::cout << "Depósito realizado.\n";
+    } else {
+        std::cout << "Conta não encontrada.\n";
+    }
+}
+
+void sacarValor() {
+    int numero;
+    double valor;
+    std::cout << "Número da conta: ";
+    std::cin >> numero;
+
+    Conta* conta = buscarConta(numero);
+    if (conta) {
+        std::cout << "Valor para sacar: R$ ";
+        std::cin >> valor;
+        if (conta->sacar(valor)) {
+            std::cout << "Saque realizado.\n";
+        } else {
+            std::cout << "Saldo insuficiente ou valor inválido.\n";
+        }
+    } else {
+        std::cout << "Conta não encontrada.\n";
+    }
+}
+
+int main() {
+    int opcao;
+    do {
+        std::cout << "\n--- Menu Bancário ---\n";
+        std::cout << "1. Criar conta\n";
+        std::cout << "2. Ver saldo\n";
+        std::cout << "3. Depositar\n";
+        std::cout << "4. Sacar\n";
+        std::cout << "0. Sair\n";
+        std::cout << "Escolha: ";
+        std::cin >> opcao;
+
+        switch (opcao) {
+            case 1: criarConta(); break;
+            case 2: verSaldo(); break;
+            case 3: depositarValor(); break;
+            case 4: sacarValor(); break;
+            case 0: std::cout << "Saindo...\n"; break;
+            default: std::cout << "Opção inválida.\n"; break;
+        }
+    } while (opcao != 0);
 
     return 0;
-
 }

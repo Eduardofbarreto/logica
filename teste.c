@@ -1,149 +1,93 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <libpq-fe.h>
+#include <locale.h>
 
-void inserirPessoa(PGconn *conn) {
-    char nome[100];
-    int idade;
+// Estrutura para representar um cadastro
+struct Cadastro {
+    char nome[50];
+    char senha[50];
+};
 
-    printf("Nome: ");
-    getchar(); // consumir quebra de linha anterior
-    fgets(nome, sizeof(nome), stdin);
-    nome[strcspn(nome, "\n")] = 0;
+// Estrutura para representar uma venda
+struct Venda {
+    struct Cadastro cadastro;
+    char produto[50];
+    double valor;
+    int quantidade;
+    double total;
+};
 
-    printf("Idade: ");
-    scanf("%d", &idade);
-
-    const char *paramValues[2];
-    char idadeStr[10];
-
-    snprintf(idadeStr, sizeof(idadeStr), "%d", idade);
-    paramValues[0] = nome;
-    paramValues[1] = idadeStr;
-
-    PGresult *res = PQexecParams(conn,
-        "INSERT INTO pessoas (nome, idade) VALUES ($1, $2)",
-        2, NULL, paramValues, NULL, NULL, 0);
-
-    if (PQresultStatus(res) != PGRES_COMMAND_OK) {
-        printf("Erro ao inserir pessoa: %s", PQerrorMessage(conn));
-    } else {
-        printf("Pessoa inserida com sucesso!\n");
-    }
-
-    PQclear(res);
+// Função para realizar o cadastro (análogo ao método logar)
+void cadastrar(struct Cadastro *cadastro) {
+    printf("Digite seu nome: \n");
+    scanf("%s", cadastro->nome);
+    printf("Digite sua senha: \n");
+    scanf("%s", cadastro->senha);
+    printf("\n");
 }
 
-void listarPessoas(PGconn *conn) {
-    PGresult *res = PQexec(conn, "SELECT id, nome, idade FROM pessoas ORDER BY id");
-
-    if (PQresultStatus(res) != PGRES_TUPLES_OK) {
-        printf("Erro ao listar pessoas: %s", PQerrorMessage(conn));
-        PQclear(res);
-        return;
-    }
-
-    int rows = PQntuples(res);
-    printf("\n--- Lista de pessoas ---\n");
-    for (int i = 0; i < rows; i++) {
-        printf("ID: %s, Nome: %s, Idade: %s\n",
-               PQgetvalue(res, i, 0),
-               PQgetvalue(res, i, 1),
-               PQgetvalue(res, i, 2));
-    }
-
-    PQclear(res);
+// Função para exibir mensagem de boas-vindas
+void boasVindas(const char *nome) {
+    printf("Cadastro realizado com sucesso!\n");
+    printf("Seja bem-vindo %s\n", nome);
+    printf("\n");
 }
 
-void atualizarPessoa(PGconn *conn) {
-    int id, idade;
-    char nome[100];
-
-    printf("ID da pessoa para atualizar: ");
-    scanf("%d", &id);
-    getchar();
-
-    printf("Novo nome: ");
-    fgets(nome, sizeof(nome), stdin);
-    nome[strcspn(nome, "\n")] = 0;
-
-    printf("Nova idade: ");
-    scanf("%d", &idade);
-
-    char idStr[10], idadeStr[10];
-    snprintf(idStr, sizeof(idStr), "%d", id);
-    snprintf(idadeStr, sizeof(idadeStr), "%d", idade);
-
-    const char *paramValues[3] = { nome, idadeStr, idStr };
-
-    PGresult *res = PQexecParams(conn,
-        "UPDATE pessoas SET nome=$1, idade=$2 WHERE id=$3",
-        3, NULL, paramValues, NULL, NULL, 0);
-
-    if (PQresultStatus(res) != PGRES_COMMAND_OK) {
-        printf("Erro ao atualizar pessoa: %s", PQerrorMessage(conn));
-    } else {
-        printf("Pessoa atualizada com sucesso!\n");
-    }
-
-    PQclear(res);
+// Função para exibir mensagem de login
+void login(const char *nome) {
+    printf("Que bom que você voltou %s!\n", nome);
+    printf("\n");
 }
 
-void deletarPessoa(PGconn *conn) {
-    int id;
-    printf("ID da pessoa para deletar: ");
-    scanf("%d", &id);
+// Função para obter informações sobre a mercadoria
+void obterMercadoria(struct Venda *venda) {
+    printf("Nome do produto: \n");
+    scanf("%s", venda->produto);
+    printf("Valor do produto: \n");
+    scanf("%lf", &venda->valor);
+    printf("Quantidade do produto: \n");
+    scanf("%d", &venda->quantidade);
+}
 
-    char idStr[10];
-    snprintf(idStr, sizeof(idStr), "%d", id);
-
-    const char *paramValues[1] = { idStr };
-
-    PGresult *res = PQexecParams(conn,
-        "DELETE FROM pessoas WHERE id=$1",
-        1, NULL, paramValues, NULL, NULL, 0);
-
-    if (PQresultStatus(res) != PGRES_COMMAND_OK) {
-        printf("Erro ao deletar pessoa: %s", PQerrorMessage(conn));
+// Função para calcular o valor total da venda
+void calcularTotal(struct Venda *venda) {
+    if (venda->quantidade >= 2) {
+        venda->total = venda->quantidade * venda->valor;
+        printf("O valor foi de: R$ %.2f\n", venda->total);
     } else {
-        printf("Pessoa deletada com sucesso!\n");
+        venda->total = venda->valor;
+        printf("O valor foi de: R$ %.2f\n", venda->total);
     }
+}
 
-    PQclear(res);
+// Função para exibir mensagem de conclusão da venda
+void concluirVenda(const char *nome, const char *produto, double total) {
+    printf("Parabéns %s!\n", nome);
+    printf("Seu(ua) %s foi vendido com sucesso!\n", produto);
+    printf("O valor foi de: R$ %.2f\n", total);
+    printf("\n");
 }
 
 int main() {
-    const char *conninfo = "dbname=meu_novo_banco_de_dados user=postgres password=root host=localhost";
-    PGconn *conn = PQconnectdb(conninfo);
+    int opcaoEntrada;
+    struct Venda minhaVenda;
 
-    if (PQstatus(conn) != CONNECTION_OK) {
-        fprintf(stderr, "Erro na conexão: %s", PQerrorMessage(conn));
-        PQfinish(conn);
-        return 1;
+    printf("Você já é cliente? \n");
+    printf("1 - SIM\n");
+    printf("2 - NÃO\n");
+    scanf("%d", &opcaoEntrada);
+
+    if (opcaoEntrada == 1) {
+        cadastrar(&minhaVenda.cadastro);
+        login(minhaVenda.cadastro.nome);
+    } else {
+        cadastrar(&minhaVenda.cadastro);
+        boasVindas(minhaVenda.cadastro.nome);
     }
 
-    int opcao;
-    do {
-        printf("\n===== Menu CRUD pessoas =====\n");
-        printf("1. Inserir pessoa\n");
-        printf("2. Listar pessoas\n");
-        printf("3. Atualizar pessoa\n");
-        printf("4. Deletar pessoa\n");
-        printf("0. Sair\n");
-        printf("Escolha uma opção: ");
-        scanf("%d", &opcao);
+    obterMercadoria(&minhaVenda);
+    calcularTotal(&minhaVenda);
+    concluirVenda(minhaVenda.cadastro.nome, minhaVenda.produto, minhaVenda.total);
 
-        switch (opcao) {
-            case 1: inserirPessoa(conn); break;
-            case 2: listarPessoas(conn); break;
-            case 3: atualizarPessoa(conn); break;
-            case 4: deletarPessoa(conn); break;
-            case 0: printf("Saindo...\n"); break;
-            default: printf("Opção inválida!\n"); break;
-        }
-    } while (opcao != 0);
-
-    PQfinish(conn);
     return 0;
 }
