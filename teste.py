@@ -1,16 +1,10 @@
 lista = ["casa", "comida", "cachorros", "carro", "paisagem", "computador", "televisão"]
 
-lista.pop(1)
+#for x in lista:
+    #print(x)
+    
+#print all items in the list, one by one
 
-#remove the last item
-#lista.pop()
-
-#remove the first item
-#lista.pop[0]
-
-#del lista
-#remove the entire list
-
-lista.clear()
-
-print(lista)
+#print all items by referring to their index number:
+for i in range(len(lista)):
+    print(lista[i])
