@@ -1,10 +1,11 @@
-lista = ["casa", "comida", "cachorros", "carro", "paisagem", "computador", "televisão"]
-
-#for x in lista:
-    #print(x)
-    
-#print all items in the list, one by one
-
-#print all items by referring to their index number:
-for i in range(len(lista)):
-    print(lista[i])
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        
+    def myfunc(self):
+        print("Hello, my name is " + self.name)
+        
+p1 = Person("John", 36)
+p1.myfunc()
+        
