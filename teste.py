@@ -1,3 +1,5 @@
 lista = ["casa", "comida", "cachorros", "carro", "paisagem", "computador", "televisão"]
 
-print(lista[2:5])
+lista[1] = "vida"
+
+print(lista[1])
