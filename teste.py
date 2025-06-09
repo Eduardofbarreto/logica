@@ -1,7 +1,3 @@
-a = 200
-b = 19
+lista = ["casa", "comida", "cachorros", "carro", "paisagem", "computador", "televisão"]
 
-if b > a:
-    print("B é maior que A")
-else:
-    print("A é maior que B")
+print(lista[2:5])
