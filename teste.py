@@ -8,4 +8,9 @@ lista.pop(1)
 #remove the first item
 #lista.pop[0]
 
+#del lista
+#remove the entire list
+
+lista.clear()
+
 print(lista)
