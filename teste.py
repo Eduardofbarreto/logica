@@ -1,5 +1,6 @@
 a = 3
 b = 5
-soma = a + b
+c = 2
+soma = a + b + c
 
 print(soma)
