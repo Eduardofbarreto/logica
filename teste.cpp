@@ -10,9 +10,9 @@ int main(){
     std::cout<<"Digite um valor para number: "<<std::endl;
     std::cin>>number;
 
-    for(int num : num_tab){
-        resultado = (number * num);
-        std::cout<<"O valor de "<<number<<" x "<<num<<" = "<<resultado<<std::endl;
+    for(int i : num_tab){
+        resultado = i * number;
+        std::cout<<"O resultado de "<<number<<" x "<<i<<" = "<<resultado<<std::endl;
     }
 
     return 0;
