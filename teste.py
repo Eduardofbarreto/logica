@@ -1,3 +1,5 @@
 a = 3
+b = 5
+soma = a + b
 
-print(a)
+print(soma)
