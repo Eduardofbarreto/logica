@@ -2,12 +2,9 @@
 
 int main(){
 
-    int num;
+    int numeros [5] = {1,2,3,4,5};
 
-    printf("Digite um numero: ");
-    scanf("%d", &num);
-
-    printf("Voce digitou: %d", num);
+    printf("%d", numeros[1]);
     printf("\n");
 
     return 0;
