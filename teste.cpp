@@ -1,19 +1,26 @@
-#include <iostream>
-#include<string>
+#include<iostream>
+#include<vector>
+
+int somaElementos(const std::vector<int> & numeros){
+    int soma = 0;
+    for(int num : numeros){
+        soma += num;
+    }
+    return soma;
+}
 
 int main(){
 
-    int number;
-    int num_tab [10] = {1,2,3,4,5,6,7,8,9,10};
-    int resultado;
+    int num1, num2, num3;
 
-    std::cout<<"Digite um valor para number: "<<std::endl;
-    std::cin>>number;
+    std::cout<<"Digite um valor para num 1: "<<std::endl;
+    std::cin>>num1;
+    std::cout<<"Digite um valor para num 2: "<<std::endl;
+    std::cin>>num2;
+    std::cout<<"Digite um valor para num 3: "<<std::endl;
+    std::cin>>num3;
 
-    for(int i : num_tab){
-        resultado = i * number;
-        std::cout<<"O resultado de "<<number<<" x "<<i<<" = "<<resultado<<std::endl;
-    }
-
+    std::vector<int>lista = {num1, num2, num3};
+    std::cout<<"A soma dos elementos é: "<<somaElementos(lista)<<std::endl;
     return 0;
 }
