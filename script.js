@@ -1,24 +1,13 @@
-// Exemplo 1: document.write()
-document.write("<strong>Usando document.write:</strong><br>");
-for (let andar = 1; andar <= 10; andar++) {
-  document.write(`O elevador está no ${andar}<br>`);
-}
+let a = 12;
+let b = 6;
 
-// Exemplo 2: innerHTML
-let texto = "<strong>Usando innerHTML:</strong><br>";
-for (let andar = 1; andar <= 10; andar++) {
-  texto += `O elevador está no ${andar}<br>`;
-}
-document.getElementById("saida-innerHTML").innerHTML = texto;
+let soma = a + b;
 
-// Exemplo 3: Criando elementos dinamicamente
-const container = document.getElementById("saida-dinamica");
-const titulo = document.createElement("p");
-titulo.innerHTML = "<strong>Usando criação dinâmica:</strong>";
-container.appendChild(titulo);
+let nome = "Eduardo";
+let sobrenome = "Barreto";
 
-for (let andar = 1; andar <= 10; andar++) {
-  const p = document.createElement("p");
-  p.textContent = `O elevador está no ${andar}`;
-  container.appendChild(p);
-}
+document.getElementById("frase").innerHTML = `A soma de ${a} + ${b} é: ${soma}.`;
+
+document.getElementById("nome").innerHTML = `Meu nome é ${nome} ${sobrenome}.`;
+
+
