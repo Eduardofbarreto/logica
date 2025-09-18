@@ -1,21 +1,26 @@
-//(C×9/5)+32=F
-//(F−32)×5/9=C
-
 #include<iostream>
 
 int main(){
 
-    float c;
-    float temp_f;
+    float peso, altura, imc;
 
-    std::cout<<"Digite a temperatura em Celsius: "<<std::endl;
-    std::cin>>c;
+    std::cout<<"Digite o seu peso: "<<std::endl;
+    std::cin>>peso;
 
-    temp_f = (c * 9/5)+32;
+    std::cout<<"Digite sua altura: "<<std::endl;
+    std::cin>>altura;
 
-    std::cout<<"A temperatura em Fahreihet é de: "<<temp_f<<std::endl;
+    imc = (peso/(altura*altura));
 
-
+    if(imc>30){
+        std::cout<<"Obesidade Grau I"<<std::endl;
+    }else if(imc > 25){
+        std::cout<<"Sobrepeso"<<std::endl;
+    }else if(imc > 18.5){
+        std::cout<<"Peso normal"<<std::endl;
+    }else{
+        std::cout<<"Magreza!"<<std::endl;
+    }
 
     return 0;
 }
