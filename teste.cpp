@@ -2,25 +2,20 @@
 
 int main(){
 
-    float peso, altura, imc;
+    float dolar, euro, real, total_euro, total_dolar;
 
-    std::cout<<"Digite o seu peso: "<<std::endl;
-    std::cin>>peso;
+    dolar = 5.30;
+    euro = 6.25;
 
-    std::cout<<"Digite sua altura: "<<std::endl;
-    std::cin>>altura;
+    std::cout<<"Digite o valor em Reais: "<<std::endl;
+    std::cin>>real;
 
-    imc = (peso/(altura*altura));
+    total_dolar = real / dolar;
+    total_euro = real / euro;
 
-    if(imc>30){
-        std::cout<<"Obesidade Grau I"<<std::endl;
-    }else if(imc > 25){
-        std::cout<<"Sobrepeso"<<std::endl;
-    }else if(imc > 18.5){
-        std::cout<<"Peso normal"<<std::endl;
-    }else{
-        std::cout<<"Magreza!"<<std::endl;
-    }
+    std::cout<<"Você tem $"<<total_dolar<<std::endl;
+    std::cout<<"Você tem ¢"<<total_euro<<std::endl;
+
 
     return 0;
 }
