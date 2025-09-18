@@ -5,15 +5,16 @@
 
 int main(){
 
-    float c, f;
-    float temp_c, temp_f;
+    float c;
+    float temp_f;
 
-    std::cout<<"Digite a temperatura em Fahrenheit: "<<std::endl;
-    std::cin>>f;
+    std::cout<<"Digite a temperatura em Celsius: "<<std::endl;
+    std::cin>>c;
 
-    temp_c = (f - 32)*5/9;
+    temp_f = (c * 9/5)+32;
 
-    std::cout<<"A temperatura em Celsius é de: "<<temp_c<<std::endl;
+    std::cout<<"A temperatura em Fahreihet é de: "<<temp_f<<std::endl;
+
 
 
     return 0;
