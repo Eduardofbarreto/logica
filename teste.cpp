@@ -1,25 +1,28 @@
 #include<iostream>
 
+using namespace std;
 int main(){
 
-    int num1, num2, num3;
+    int nota1, nota2, nota3;
+    float media;
 
-    std::cout<<"Digite o primeiro número: "<<std::endl;
-    std::cin>>num1;
+    cout<<"Digite a primeira nota: ";
+    cin>>nota1;
 
-    std::cout<<"Digite o segundo número: "<<std::endl;
-    std::cin>>num2;
+    cout<<"\nDigite a segunda nota: ";
+    cin>>nota2;
 
-    std::cout<<"Digite o terceiro número: "<<std::endl;
-    std::cin>>num3;
+    cout<<"\nDigite a terceira nota: ";
+    cin>>nota3;
 
-    if(num1 > num2 && num1 > num3){
-        std::cout<<num1<<" é o maior de todos!";
-    }else if(num2 > num1 && num2 > num3){
-        std::cout<<num2<<" é o maior de todos!";
+    media = (nota1 + nota2 + nota3)/3;
+
+    if(media>=7){
+        cout<<"\nAprovado!";
     }else{
-        std::cout<<num3<<" é o maior de todos!";
+        cout<<"\nReprovado!";
     }
 
+    cout<<"\n\n";
     return 0;
 }
