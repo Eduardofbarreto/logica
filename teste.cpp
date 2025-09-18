@@ -2,20 +2,16 @@
 
 int main(){
 
-    float dolar, euro, real, total_euro, total_dolar;
+    int num;
 
-    dolar = 5.30;
-    euro = 6.25;
+    std::cout<<"Digite um número para saber se é par ou ímpar: "<<std::endl;
+    std::cin>>num;
 
-    std::cout<<"Digite o valor em Reais: "<<std::endl;
-    std::cin>>real;
-
-    total_dolar = real / dolar;
-    total_euro = real / euro;
-
-    std::cout<<"Você tem $"<<total_dolar<<std::endl;
-    std::cout<<"Você tem ¢"<<total_euro<<std::endl;
-
+    if(num % 2 == 0){
+        std::cout<<num<<" é par!"<<std::endl;
+    }else{
+        std::cout<<num<<" é ímpar!"<<std::endl;
+    }
 
     return 0;
 }
