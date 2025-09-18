@@ -2,15 +2,23 @@
 
 int main(){
 
-    int num;
+    int num1, num2, num3;
 
-    std::cout<<"Digite um número para saber se é par ou ímpar: "<<std::endl;
-    std::cin>>num;
+    std::cout<<"Digite o primeiro número: "<<std::endl;
+    std::cin>>num1;
 
-    if(num % 2 == 0){
-        std::cout<<num<<" é par!"<<std::endl;
+    std::cout<<"Digite o segundo número: "<<std::endl;
+    std::cin>>num2;
+
+    std::cout<<"Digite o terceiro número: "<<std::endl;
+    std::cin>>num3;
+
+    if(num1 > num2 && num1 > num3){
+        std::cout<<num1<<" é o maior de todos!";
+    }else if(num2 > num1 && num2 > num3){
+        std::cout<<num2<<" é o maior de todos!";
     }else{
-        std::cout<<num<<" é ímpar!"<<std::endl;
+        std::cout<<num3<<" é o maior de todos!";
     }
 
     return 0;
