@@ -18,6 +18,11 @@ int main(){
             std::cout<<"Parabéns!! Você acertou!!"<<std::endl;
         }else{
             std::cout<<"Quase!!"<<std::endl;
+            if(num_escolhido > num_aleat){
+                std::cout<<"Você precisa digitar um valor mais baixo!"<<std::endl;
+            }else{
+                std::cout<<"Você precisa digitar um valor mais alto!!"<<std::endl;
+            }
         }
     }
 
