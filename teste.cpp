@@ -3,26 +3,35 @@
 using namespace std;
 int main(){
 
-    int nota1, nota2, nota3;
-    float media;
+    int dia;
 
-    cout<<"Digite a primeira nota: ";
-    cin>>nota1;
+    cout<<"Digite um valor para dia: ";
+    cin>>dia;
 
-    cout<<"\nDigite a segunda nota: ";
-    cin>>nota2;
+    switch(dia){
+        case 1:
+        cout<<"\nDomingo";
+        break;
+        case 2:
+        cout<<"\nSegunda";
+        break;
+        case 3:
+        cout<<"\nTerça";
+        break;
+        case 4:
+        cout<<"\nQuarta";
+        break;
+        case 5:
+        cout<<"\nQuinta";
+        break;
+        cout<<"\nSexta";
+        break;
+        cout<<"\nSábado";
+        break;
+        default:
+        cout<<"\nNenhum valor válido!";
 
-    cout<<"\nDigite a terceira nota: ";
-    cin>>nota3;
-
-    media = (nota1 + nota2 + nota3)/3;
-
-    if(media>=7){
-        cout<<"\nAprovado!";
-    }else{
-        cout<<"\nReprovado!";
     }
 
-    cout<<"\n\n";
     return 0;
 }
