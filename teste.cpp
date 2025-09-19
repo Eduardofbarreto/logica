@@ -1,14 +1,15 @@
 #include<iostream>
 
-using namespace std;
 int main(){
 
-    int num;
+    int tab, resul;
 
-    num = 10;
+    std::cout<<"Digite um número para a tabuada: "<<std::endl;
+    std::cin>>tab;
 
-    for(int i = 10; i >= 0; i--){
-        cout<<"\nContagem regressiva: "<<i;
+    for(int i = 0; i <= 10; i++){
+        resul = tab * i;
+        std::cout<<"O resultado de "<<tab<<" x "<<i<<" = "<<resul<<std::endl;
     }
 
     return 0;
