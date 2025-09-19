@@ -2,15 +2,18 @@
 
 int main(){
 
-    int n;
-    int soma = 0;
+    int min, max;
 
-    std::cout<<"Faça uma soma de 1 até: "<<std::endl;
-    std::cin>>n;
+    std::cout<<"Digite o número mínimo: "<<std::endl;
+    std::cin>>min;
 
-    for(int i = 1; i <= n; i++){
-        soma += i;
-        std::cout<<"O resultado da é: "<<soma<<std::endl;
+    std::cout<<"Digite o número máximo: "<<std::endl;
+    std::cin>>max;
+
+    for(int i = min; i <= max; i++){
+        if(i % 2 == 0){
+            std::cout<<"O valor é par!"<<i<<std::endl;
+        }
     }
 
     return 0;
