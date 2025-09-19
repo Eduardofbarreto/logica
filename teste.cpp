@@ -1,18 +1,23 @@
 #include<iostream>
+#include<cstdlib>
+#include<ctime>
 
 int main(){
 
-    int min, max;
+    srand(time(0));
 
-    std::cout<<"Digite o número mínimo: "<<std::endl;
-    std::cin>>min;
+    int num_escolhido, num_aleat;
 
-    std::cout<<"Digite o número máximo: "<<std::endl;
-    std::cin>>max;
+    num_aleat = (rand() % 10) + 1;
 
-    for(int i = min; i <= max; i++){
-        if(i % 2 == 0){
-            std::cout<<"O valor é par!"<<i<<std::endl;
+    while(num_escolhido != num_aleat){
+        
+        std::cout<<"Digite seu número escolhido: "<<std::endl;
+        std::cin>>num_escolhido;
+        if(num_escolhido == num_aleat){
+            std::cout<<"Parabéns!! Você acertou!!"<<std::endl;
+        }else{
+            std::cout<<"Quase!!"<<std::endl;
         }
     }
 
