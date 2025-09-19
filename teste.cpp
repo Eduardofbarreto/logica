@@ -2,14 +2,15 @@
 
 int main(){
 
-    int tab, resul;
+    int n;
+    int soma = 0;
 
-    std::cout<<"Digite um número para a tabuada: "<<std::endl;
-    std::cin>>tab;
+    std::cout<<"Faça uma soma de 1 até: "<<std::endl;
+    std::cin>>n;
 
-    for(int i = 0; i <= 10; i++){
-        resul = tab * i;
-        std::cout<<"O resultado de "<<tab<<" x "<<i<<" = "<<resul<<std::endl;
+    for(int i = 1; i <= n; i++){
+        soma += i;
+        std::cout<<"O resultado da é: "<<soma<<std::endl;
     }
 
     return 0;
