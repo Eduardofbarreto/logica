@@ -1,30 +1,14 @@
 #include<iostream>
-#include<cstdlib>
-#include<ctime>
+#include<string>
 
 int main(){
 
-    srand(time(0));
+    std::string frutas[5] = {"Maçã", "Banana", "Uva", "Mamão", "Pera"};
 
-    int num_escolhido, num_aleat;
-
-    num_aleat = (rand() % 10) + 1;
-
-    while(num_escolhido != num_aleat){
-        
-        std::cout<<"Digite seu número escolhido: "<<std::endl;
-        std::cin>>num_escolhido;
-        if(num_escolhido == num_aleat){
-            std::cout<<"Parabéns!! Você acertou!!"<<std::endl;
-        }else{
-            std::cout<<"Quase!!"<<std::endl;
-            if(num_escolhido > num_aleat){
-                std::cout<<"Você precisa digitar um valor mais baixo!"<<std::endl;
-            }else{
-                std::cout<<"Você precisa digitar um valor mais alto!!"<<std::endl;
-            }
-        }
+    for(int i = 0; i < 5; i++){
+        std::cout<<frutas[i]<<std::endl;
     }
+    
 
     return 0;
 }
