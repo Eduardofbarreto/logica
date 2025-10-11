@@ -3,17 +3,18 @@
 
 int main(){
 
-    int n;
-    int soma = 0;
+    int idade;
 
-    std::cout<<"Digite o número final da soma: "<<std::endl;
-    std::cin>>n;
+    std::cout<<"Digite a sua idade: "<<std::endl;
+    std::cin>>idade;
 
-    for(int i = 1; i <= n; i++){
-        soma += i;
+    if(idade <= 13){
+        std::cout<<"Conteúdo infantil!"<<std::endl;
+    }else if(idade <= 17){
+        std::cout<<"Conteúdo Teen!"<<std::endl;
+    }else{
+        std::cout<<"Conteúdo Adulto!"<<std::endl;
     }
-
-    std::cout<<soma<<std::endl;
 
     return 0;
 }
