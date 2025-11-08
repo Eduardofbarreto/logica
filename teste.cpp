@@ -1,13 +1,19 @@
 #include<iostream>
-#include<string>
+#include<iomanip>
 
 int main(){
 
-    std::string palavras[5] = {"computador", "mouse", "teclado", "placa mãe", "chipset"};
+    float area;
+    float n = 3.14159;
+    float raio;
 
-    for(std::string palavra : palavras){
-        std::cout<<palavra<<std::endl;
-    }
+    std::cout<<"Digite um valor para raio: "<<std::endl;
+    std::cin>>raio;
+
+    area = n * (raio * raio);
+
+    std::cout<<"O valor da área é de: "<<std::fixed<<
+    std::setprecision(2)<<area<<std::endl;
 
     return 0;
 }
