@@ -11,5 +11,5 @@ int main(){
     std::cout<<"Digite seu sobrenome: "<<std::endl;
     std::cin>>sobrenome;
 
-    std::cout<<"Meu nome é "<<nome<<" "<<sobrenome<<"!"<<std::endl;
+    std::cout<<"Meu nome é "<<nome<<" "<<sobrenome<<"!!"<<std::endl;
 }
