@@ -1,19 +1,15 @@
 #include<iostream>
-#include<iomanip>
 
 int main(){
 
-    float area;
-    float n = 3.14159;
-    float raio;
+    std::string nome;
+    std::string sobrenome;
 
-    std::cout<<"Digite um valor para raio: "<<std::endl;
-    std::cin>>raio;
+    std::cout<<"Digite seu nome: "<<std::endl;
+    std::cin>>nome;
 
-    area = n * (raio * raio);
+    std::cout<<"Digite seu sobrenome: "<<std::endl;
+    std::cin>>sobrenome;
 
-    std::cout<<"O valor da área é de: "<<std::fixed<<
-    std::setprecision(2)<<area<<std::endl;
-
-    return 0;
+    std::cout<<"Meu nome é "<<nome<<" "<<sobrenome<<"!"<<std::endl;
 }
